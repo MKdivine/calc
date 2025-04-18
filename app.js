@@ -30,7 +30,7 @@ const calcResult = operate(number1, number2, operator);
 const resultDisplay = document.getElementById("result");
 
 resultDisplay.textContent = calcResult;
-const display = result.appendChild(calcResult);
+
 
 
 
