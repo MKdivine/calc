@@ -29,7 +29,7 @@ const calcResult = operate(number1, number2, operator);
 // Calculator DOM UI
 const resultDisplay = document.getElementById("result");
 
-resultDisplay.textContent = calcResult;
+resultDisplay.textContent = "Result: " + calcResult;
 
 
 
