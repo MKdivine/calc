@@ -28,9 +28,14 @@ body {
     margin: 20px;
 }
 
-.buttons {
+ .allButtons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 10px;
+    width: 100px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    font-size: 16px; /* Optional: Adjust text size */
+
 }
