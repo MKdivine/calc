@@ -12,6 +12,7 @@ let number1 = 2;
 let number2 = 2;
 let operator = "+";
 
+
 const operate = (a, b, operator) => {
     switch (operator) {
         case "+":
@@ -26,6 +27,8 @@ const operate = (a, b, operator) => {
 }
 const calcResult = operate(number1, number2, operator);
 
+
+
 // Calculator DOM UI
 const resultDisplay = document.getElementById("result");
 
@@ -36,10 +39,8 @@ resultDisplay.textContent = "Result: " + calcResult;
 const clearButton = document.getElementById("CLEAR");
 
 clearButton.addEventListener("click", () => {
-    resultDisplay.textContent = "Result:  ";
+    resultDisplay.textContent = "Result:   ";
 });
-
-
 
 
 
