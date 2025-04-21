@@ -31,6 +31,13 @@ const resultDisplay = document.getElementById("result");
 
 resultDisplay.textContent = "Result: " + calcResult;
 
+// Calculator Clear Button - not working
+
+const clearButton = document.getElementById("clear");
+
+clearButton.addEventListener("click", (resultDisplay) => {
+    resultDisplay.textContent = "Result:  ";
+});
 
 
 
