@@ -86,3 +86,23 @@ body {
     background-color: #5cdf05;
     border: 2px solid #170101;
 }
+
+
+.buttons4 {
+    display: flex; /* Flexbox verwenden */
+    justify-content: center; /* Zentriert den Button horizontal */
+    align-items: center; /* Zentriert den Button vertikal */
+    margin: 5px 0; /* Abstand nach oben und unten */
+}
+
+.buttons4 button {
+    width: 173px;/* Doppelte Breite eines normalen Buttons + Abstand */
+    height: 50px; /* Gleiche Höhe wie die anderen Buttons */
+    font-size: 18px; /* Gleiche Schriftgröße */
+    background-color: #5eefa9;
+    border: 1px solid #170101;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, border 0.2s;
+}
