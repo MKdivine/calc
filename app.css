@@ -15,8 +15,8 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-     font-size: 50px;
-     text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+    font-size: 50px;
+    text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
 }
 
 .display {
@@ -35,14 +35,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin: 20px;
 }
 
-.buttonsOperator{
+.buttonsOperator {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,6 +106,5 @@ body {
 }
 
 #CLEAR {
-    width: 110px;
+    width: 50px;
 }
-
