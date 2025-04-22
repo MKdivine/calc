@@ -64,6 +64,10 @@ body {
     margin: 5px 0;
 }
 
+.buttons3 {
+    flex-wrap: wrap;
+}
+
 /* Alle Buttons */
 .allButtons button {
     width: 50px;
