@@ -2,57 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
-    <title>Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="app.css">
+  <title>Calculator</title>
 </head>
 
 <body>
 
-    <h1 id="title">Calculator</h1>
-    <div class="container">
+  <h1 id="title">Calculator</h1>
 
-        <div class="display">
+  <div class="container">
+    <div class="display">
+      <p id="result"></p>
+    </div>
 
-            <p id="result"></p>
-        </div>
-        <div class="allButtons">
-            <div class="buttons1">
-                <button id="number1">1</button>
-                <button id="number2">2</button>
-                <button id="number3">3</button>
+    <div class="allButtons">
 
-            </div>
+      <!-- Zahlen-Buttons -->
+      <div class="buttons1">
+        <button class="number" data-value="1">1</button>
+        <button class="number" data-value="2">2</button>
+        <button class="number" data-value="3">3</button>
+      </div>
 
-            <div class="buttons2">
-                <button id="number4">4</button>
-                <button id="number5">5</button>
-                <button id="number6">6</button>
+      <div class="buttons2">
+        <button class="number" data-value="4">4</button>
+        <button class="number" data-value="5">5</button>
+        <button class="number" data-value="6">6</button>
+      </div>
 
-            </div>
+      <div class="buttons3">
+        <button class="number" data-value="7">7</button>
+        <button class="number" data-value="8">8</button>
+        <button class="number" data-value="9">9</button>
+        <button class="number" data-value="0">0</button>
+      </div>
 
-            <div class="buttons3">
-                <button id="number7">7</button>
-                <button id="number8">8</button>
-                <button id="number9">9</button>
-                <button id="number10">0</button>
-            </div>
+      <!-- Operatoren -->
+      <div class="buttonsOperator">
+        <button class="operator" data-op="+">+</button>
+        <button class="operator" data-op="-">-</button>
+        <button class="operator" data-op="*">*</button>
+      </div>
 
-            
-            <div class="buttonsOperator">
-                <button id="operator">+</button>
-                <button id="operator">-</button>
-                <button id="operator">*</button>
-                <button id="operator">/</button>
-                <button id="operator">=</button>
-                <button id="CLEAR">CE</button>
-            </div>
-        </div>
+      <div class="buttonsSide">
+        <button class="operator" data-op="/">/</button>
+        <button class="operator" data-op="=">=</button>
+        <button id="CLEAR">CE</button>
+      </div>
 
-    </div> <!-- this closes the main container -->
+    </div> <!-- allButtons -->
+  </div> <!-- container -->
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>

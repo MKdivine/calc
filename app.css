@@ -1,24 +1,26 @@
 * {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
 body {
-
     height: 100vh;
     background-color: #f0f0f0;
-}
-
-#title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 50px;
-    text-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Titel */
+#title {
+    font-size: 50px;
+    text-shadow: 2px 2px 2px rgba(57, 32, 169, 0.2);
+    margin: 20px 0;
+}
+
+/* Display */
 .display {
     display: flex;
     justify-content: center;
@@ -26,85 +28,57 @@ body {
     flex-direction: column;
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    margin-bottom: 10px;
 }
 
+/* Container */
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding: 20px;
-    margin: 20px;
-}
-
-.buttonsOperator {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: tow;
-    background-color: #fff;
-
-    /* Add these properties to make buttons bigger */
-    width: 450px;
-    /* Adjust as needed */
-    height: 60px;
-    /* Adjust as needed */
-    font-size: 18px;
-    /* Adjust text size */
+    padding: 20px;
 }
 
+/* Button-Gruppe */
 .allButtons {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin: 20px;
-    font-size: 20px;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-
 }
 
+/* Nummern- und Operatorreihen */
+.buttons1,
+.buttons2,
+.buttons3,
+.buttonsOperator,
+.buttonsSide {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px 0;
+}
 
-
-
+/* Alle Buttons */
 .allButtons button {
     width: 50px;
-    /* Adjust as needed */
     height: 50px;
-    /* Adjust as needed */
     font-size: 18px;
-    /* Adjust text size */
     background-color: #5eefa9;
     border: 1px solid #170101;
     border-radius: 5px;
-    margin: 2px;
     cursor: pointer;
     box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s, border 0.2s;
 }
 
+/* Hover-Effekt */
 .allButtons button:hover {
     background-color: #5cdf05;
     border: 2px solid #170101;
-    border-radius: 5px;
-    margin: 2px;
-    cursor: pointer;
-    box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.2);
-}
-
-.buttons4 button {
-    width: 54px !important;
-    height: 50px !important;
-    font-size: 20px !important;
-}
-
-#CLEAR {
-    width: 50px;
 }
