@@ -26,7 +26,7 @@ img {
 
 /* Titel */
 #title {
-    font-size: 80px;
+    font-size: 69px;
     margin: 20px 0;
     font-variant: small-caps;
     text-align: center;
@@ -68,6 +68,13 @@ img {
     padding: 20px;
 }
 
+.calcShell {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Exakte Zentrierung */
+}
+
 /* Button-Container */
 .calcShell {
     display: flex;
@@ -90,6 +97,7 @@ img {
 .calcShell button {
     width: 50px;
     height: 50px;
+  
     font-size: 18px;
     background-color: #76dd22;
     border: 1px solid #170101;
@@ -165,8 +173,8 @@ img {
     object-fit: cover;
     object-position: center center;
     pointer-events: none;
-    filter: blur(4px) brightness(0.8) contrast(1.2) saturate(20%) hue-rotate(89deg);
-    animation: glitch 20s infinite;
+    filter: blur(4px) brightness(0.8) contrast(0.1) saturate(20%) hue-rotate(89deg);
+    animation: glitch 0.90s infinite;
     will-change: transform, filter;
     backface-visibility: hidden;
   }
