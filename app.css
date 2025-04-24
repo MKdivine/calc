@@ -94,7 +94,7 @@ body {
     width: 50px;
     height: 50px;
     font-size: 18px;
-    background-color: #5eefa9;
+    background-color: #76dd22;
     border: 1px solid #170101;
     border-radius: 5px;
     cursor: pointer;
@@ -108,7 +108,7 @@ body {
 
 /* Hover-Effekt */
 .allButtons button:hover {
-    background-color: #5cdf05;
+    background-color: #cdee10;
     border: 2px solid #170101;
 }
 
@@ -124,7 +124,7 @@ body {
     width: 173px;/* Doppelte Breite eines normalen Buttons + Abstand */
     height: 50px; /* Gleiche Höhe wie die anderen Buttons */
     font-size: 18px; /* Gleiche Schriftgröße */
-    background-color: #5eefa9;
+    background-color: #fbff0d;
     border: 1px solid #170101;
     border-radius: 5px;
     cursor: pointer;
