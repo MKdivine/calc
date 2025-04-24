@@ -8,7 +8,7 @@ const divideNumbers = (a, b) => a / b;
 
 // Calculator logic
 
-let number1 = 2;
+let number1 = 86;
 let number2 = 2;
 let operator = "+";
 
