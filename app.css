@@ -14,8 +14,6 @@ body {
     font-optical-sizing: auto;
 }
 
-
-
 /* Hintergrundbild */
 img {
     width: 100%;
@@ -41,10 +39,7 @@ img {
         -1px -1px 2px rgba(255, 255, 255, 0.3),
         0px 0px 12px rgba(17, 220, 243, 0.6);
 }
-.video-background video {
-    filter: contrast(1.2) saturate(1.8) hue-rotate(45deg);
-  }
-  
+
 
 
 /* Display */
@@ -147,17 +142,8 @@ img {
 }
 
 
-/* Video-Hintergrund */
-.video-background {
-    position: fixed;     /* Immer im Hintergrund */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1;         /* Hinter allem anderen */
-  }
-  
+
+
   /* Video selbst */
   .video-background {
     position: fixed;     /* Immer im Hintergrund */
@@ -179,7 +165,7 @@ img {
     object-fit: cover;
     object-position: center center;
     pointer-events: none;
-    filter: blur(3px) brightness(1.2) contrast(1.2) saturate(2000%) hue-rotate(30deg);
+    filter: blur(4px) brightness(0.8) contrast(1.2) saturate(20%) hue-rotate(89deg);
     animation: glitch 20s infinite;
     will-change: transform, filter;
     backface-visibility: hidden;
