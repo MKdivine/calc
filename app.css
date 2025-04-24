@@ -10,7 +10,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
 }
 
 /* Titel */
@@ -20,30 +21,21 @@ body {
     margin: 20px 0;
     font-variant: small-caps;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
     color: #063a63;
     text-decoration: underline;
     text-decoration-color: #5ad41338;
     text-decoration-style: solid;
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
 }
-
 
 /* Display */
 .display {
     display: flex;
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 26px;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: 600;
     background-color: #20142c;
     border-radius: 16px;
     box-shadow: 1px 1px 10px rgba(223, 193, 193, 0.2);
@@ -72,24 +64,10 @@ body {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
     margin: 20px;
-    font-weight: bolder;
-
+    
 }
 
-/* Nummern- und Operatorreihen */
-.buttons1,
-.buttons2,
-.buttons3,
-.buttonsOperator,
-.buttonsSide {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 5px 0;
-
-}
-
-/* Alle Buttons */
+/* Gemeinsame Button-Styles */
 .calcShell button {
     width: 50px;
     height: 50px;
@@ -102,39 +80,30 @@ body {
     transition: background-color 0.2s, border 0.2s;
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: bold;
 }
 
-/* Hover-Effekt */
-.allButtons button:hover {
-    background-color: #cdee10;
-    border: 2px solid #170101;
+/* Spezifische Button-Anpassungen */
+.buttons4 button {
+    width: 180px;
+    background-color: #eefa40;
+    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Button Reihen */
+.buttons1,
+.buttons2,
+.buttons3,
+.buttonsOperator,
+.buttonsSide,
 .buttons4 {
     display: flex;
-    /* Flexbox verwenden */
     justify-content: center;
-    /* Zentriert den Button horizontal */
-    align-items: center;
-    /* Zentriert den Button vertikal */
+    gap: 14px;
     margin: 5px 0;
-    /* Abstand nach oben und unten */
 }
 
-.buttons4 button {
-    width: 173px;
-    /* Doppelte Breite eines normalen Buttons + Abstand */
-    height: 50px;
-    /* Gleiche Höhe wie die anderen Buttons */
-    font-size: 18px;
-    /* Gleiche Schriftgröße */
-    background-color: #fbff0d;
-    border: 1px solid #170101;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 2px 4px 1px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s, border 0.2s;
+/* Hover-Effekt für alle Buttons */
+.calcShell button:hover {
+    background-color: #cdee10;
+    border: 2px solid #170101;
 }

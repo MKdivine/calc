@@ -39,7 +39,7 @@ resultDisplay.textContent = "RESULT: " + calcResult;
 const clearButton = document.getElementById("CLEAR");
 
 clearButton.addEventListener("click", () => {
-    resultDisplay.textContent = "Result:   ";
+    resultDisplay.textContent = "RESULT:   ";
 });
 
 
