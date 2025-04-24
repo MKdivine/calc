@@ -28,19 +28,23 @@ img {
 
 /* Titel */
 #title {
-    font-size: 89px;
+    font-size: 80px;
     margin: 20px 0;
     font-variant: small-caps;
     text-align: center;
     font-weight: 700;
     color: #11dcf3;
+    letter-spacing: 10px;
     text-decoration: underline solid #8b68ddfb;
     text-shadow:
         2px 4px 1px rgba(0, 0, 0, 0.6),
         -1px -1px 2px rgba(255, 255, 255, 0.3),
         0px 0px 12px rgba(17, 220, 243, 0.6);
 }
-
+.video-background video {
+    filter: contrast(1.2) saturate(1.8) hue-rotate(45deg);
+  }
+  
 
 
 /* Display */
@@ -78,6 +82,7 @@ img {
     border-radius: 40px;
     padding: 10px;
     margin: 10px;
+
 
     /* 3D-Innenschatten + Außenschatten */
     box-shadow:
@@ -168,5 +173,22 @@ img {
     object-fit: cover;
     filter: blur(3px) brightness(1.2);
     pointer-events: none;
+  }
+  
+  .video-background video {
+    filter: contrast(1.2) saturate(2000) hue-rotate(30deg);
+  }
+  
+  @keyframes glitch {
+    0% { transform: translate(0); filter: hue-rotate(0deg); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); filter: hue-rotate(90deg); }
+    60% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); filter: hue-rotate(180deg); }
+    100% { transform: translate(0); filter: hue-rotate(0deg); }
+  }
+  
+  .video-background video {
+    animation: glitch 20s infinite;
   }
   
