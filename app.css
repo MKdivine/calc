@@ -24,7 +24,7 @@ body {
     color: #063a63;
     text-decoration: underline;
     text-decoration-color: #5ad41338;
-    text-decoration-style: solid;    
+    text-decoration-style: solid;
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 700;
@@ -63,7 +63,7 @@ body {
 }
 
 /* Button-Gruppe */
-.allButtons {
+.calcShell {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,7 +73,7 @@ body {
     padding: 10px;
     margin: 20px;
     font-weight: bolder;
-    
+
 }
 
 /* Nummern- und Operatorreihen */
@@ -86,11 +86,11 @@ body {
     justify-content: center;
     gap: 10px;
     margin: 5px 0;
-    
+
 }
 
 /* Alle Buttons */
-.allButtons button {
+.calcShell button {
     width: 50px;
     height: 50px;
     font-size: 18px;
@@ -114,16 +114,23 @@ body {
 
 
 .buttons4 {
-    display: flex; /* Flexbox verwenden */
-    justify-content: center; /* Zentriert den Button horizontal */
-    align-items: center; /* Zentriert den Button vertikal */
-    margin: 5px 0; /* Abstand nach oben und unten */
+    display: flex;
+    /* Flexbox verwenden */
+    justify-content: center;
+    /* Zentriert den Button horizontal */
+    align-items: center;
+    /* Zentriert den Button vertikal */
+    margin: 5px 0;
+    /* Abstand nach oben und unten */
 }
 
 .buttons4 button {
-    width: 173px;/* Doppelte Breite eines normalen Buttons + Abstand */
-    height: 50px; /* Gleiche Höhe wie die anderen Buttons */
-    font-size: 18px; /* Gleiche Schriftgröße */
+    width: 173px;
+    /* Doppelte Breite eines normalen Buttons + Abstand */
+    height: 50px;
+    /* Gleiche Höhe wie die anderen Buttons */
+    font-size: 18px;
+    /* Gleiche Schriftgröße */
     background-color: #fbff0d;
     border: 1px solid #170101;
     border-radius: 5px;
