@@ -44,3 +44,9 @@ clearButton.addEventListener("click", () => {
 
 
 
+
+//video background control
+const video = document.getElementById("bg-video");
+  video.playbackRate = 0.5; // 0.5 = halb so schnell, 1 = normal, 2 = doppelt so schnell
+
+
