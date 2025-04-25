@@ -6,12 +6,18 @@ const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
 // All functions work in console on firefox
 
-// Calculator logic
+// Calculator logic default
 
 let number1 = 86;
 let number2 = 2;
 let operator = "+";
 
+// Calculator save inputs
+
+let currentInput = "";
+let previousInput = "";
+let currentOperator = "";
+let resetScreen = false;
 
 const operate = (a, b, operator) => {
     switch (operator) {

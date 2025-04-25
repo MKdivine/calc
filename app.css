@@ -15,7 +15,29 @@ body {
 }
 
 /* Hintergrundbild */
+.decoration {
+    display: inline-block; /* oder flex, je nach Bedarf */
+    font-family: "Pixelify Sans", sans-serif;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #ff00ff;
+    text-shadow: 
+        0 0 5px #ff00ff,
+        0 0 10px #00ffff,
+        0 0 15px #ffff00;
+    animation: rgbGlow 2s infinite alternate;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    text-align: center;
+} 
 
+.loading {
+    text-align: left;
+    margin-left: 20px;
+}
 
 .logo img {
     max-height: 70px;
@@ -32,13 +54,13 @@ body {
     margin: 0 auto;
     margin-bottom: 10px;
     box-shadow:
-    0 0 10px #ff00ff,   /* Pink */
-    0 0 20px #00ffff,    /* Cyan */
-    0 0 30px #ffff00;    /* Gelb */
+    0 0 5px #ff00ff,   /* Pink */
+    0 0 10px #00ffff,    /* Cyan */
+    0 0 15px #ffff00;    /* Gelb */
 animation: rgbGlow 3s infinite alternate;
 filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     box-shadow:
-        inset -4px -4px 8px rgba(14, 11, 11, 0.5),
+        inset -4px -4px px rgba(14, 11, 11, 0.5),
         inset 4px 4px 8px rgba(161, 117, 164, 0.748),
        
 }
@@ -53,19 +75,19 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
         box-shadow:
             0 0 15px #00ffff,
             0 0 25px #ffff00,
-            0 0 35px #ff00ff;
+            0 0 15px #ff00ff;
     }
     66% {
         box-shadow:
             0 0 15px #ffff00,
             0 0 25px #ff00ff,
-            0 0 35px #00ffff;
+            0 0 15px #00ffff;
     }
     100% {
         box-shadow:
             0 0 20px #ff00ff,
             0 0 30px #00ffff,
-            0 0 40px #ffff00;
+            0 0 10px #ffff00;
     }
 }
 
@@ -229,7 +251,7 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     object-position: center center;
     pointer-events: none;
     filter: blur(4px) brightness(0.8) contrast(0.1) saturate(20%) hue-rotate(89deg);
-    animation: glitch 2.2s infinite;
+    animation: glitch 6s infinite;
     will-change: transform, filter;
     backface-visibility: hidden;
 }
