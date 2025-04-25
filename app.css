@@ -131,10 +131,10 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     height: 50px;
     color: #5cdf05;
     text-shadow: #170101 1px 2px 10px;
-    font-family: "Jersey 10 Charted", sans-serif;
+    font-family: "Jersey 10", sans-serif;
     font-weight: 400;
     font-style: normal;
-    border-radius: 1px;
+    border-radius: 10px;
 
 }
 

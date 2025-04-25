@@ -19,6 +19,16 @@ let previousInput = "";
 let currentOperator = "";
 let resetScreen = false;
 
+
+// Calculator logic
+let buttonZ = document.querySelectorAll(".number");
+buttonZ.forEach(button => {
+    button.addEventListener("click", () => {
+        console.log(button.textContent); // or any other logic you want when a number is clicked
+    });
+});
+
+
 const operate = (a, b, operator) => {
     switch (operator) {
         case "+":
