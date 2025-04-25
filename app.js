@@ -21,13 +21,14 @@ let resetScreen = false;
 
 
 // Calculator logic
-let buttonZ = document.querySelectorAll(".number");
-buttonZ.forEach(button => {
+let readButton = document.querySelectorAll(".number");
+readButton.forEach(button => {
     button.addEventListener("click", () => {
-        console.log(button.textContent); // or any other logic you want when a number is clicked
+        console.log(button.textContent);
+        resultDisplay.textContent = button.textContent; // or any other logic you want when a number is clicked
     });
 });
-
+9
 
 const operate = (a, b, operator) => {
     switch (operator) {
@@ -60,6 +61,6 @@ clearButton.addEventListener("click", () => {
 
 //video background control
 const video = document.getElementById("bg-video");
-  video.playbackRate = 0.5; // 0.5 = halb so schnell, 1 = normal, 2 = doppelt so schnell
+  video.playbackRate = 0.1; // 0.5 = halb so schnell, 1 = normal, 2 = doppelt so schnell
 
 
