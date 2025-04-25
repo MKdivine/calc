@@ -26,20 +26,19 @@ img {
 
 /* Titel */
 #title {
-    font-size: 69px;
+    font-size: 62px;
     margin: 20px 0;
     font-variant: small-caps;
     text-align: center;
     font-weight: 700;
     color: #11dcf3;
-    letter-spacing: 10px;
+    letter-spacing: 6px;
     text-decoration: underline solid #8b68ddfb;
     text-shadow:
         2px 4px 1px rgba(0, 0, 0, 0.6),
         -1px -1px 2px rgba(255, 255, 255, 0.3),
         0px 0px 12px rgba(17, 220, 243, 0.6);
 }
-
 
 
 /* Display */
@@ -70,7 +69,7 @@ img {
 
 .calcShell {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%); /* Exakte Zentrierung */
 }
@@ -149,9 +148,6 @@ img {
     margin: 5px 0;
 }
 
-
-
-
   /* Video selbst */
   .video-background {
     position: fixed;     /* Immer im Hintergrund */
@@ -174,7 +170,7 @@ img {
     object-position: center center;
     pointer-events: none;
     filter: blur(4px) brightness(0.8) contrast(0.1) saturate(20%) hue-rotate(89deg);
-    animation: glitch 0.90s infinite;
+    animation: glitch 2.2s infinite;
     will-change: transform, filter;
     backface-visibility: hidden;
   }
