@@ -102,8 +102,7 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
 
 /* Titel */
 #title {
-    font-size: 62px;
-    margin: 2px 0;
+    font-size: 68px;
     font-variant: small-caps;
     text-align: center;
     font-weight: 700;
