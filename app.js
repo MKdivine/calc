@@ -27,26 +27,23 @@ const readButton = document.querySelectorAll(".number");
 const downscaledDisplay = document.getElementById("result");
 let currentInput = "";
 
-readButton.forEach((button) => {
-    button.addEventListener("click", function() {
-        currentInput += button.textContent
+let inputOne = readButton.forEach((button) => {
+    button.addEventListener("click", function () {
+        currentInput + button.textContent
         resultDisplay.textContent = currentInput
-        if(currentInput.length > 16) {
-            downscaledDisplay.style.fontSize = "42px";
+        if (currentInput.length > 9) {
+            downscaledDisplay.style.fontSize = "40px";
         }
-        if(currentInput.length > 17) {
+        if (currentInput.length > 10) {
             downscaledDisplay.style.fontSize = "38px";
         }
-        if(currentInput.length > 18) {
+        if (currentInput.length > 11) {
             downscaledDisplay.style.fontSize = "36px";
         }
-        
+
     });
-        
-      }); 
 
-        
-
+});
 
 const operate = (a, b, operator) => {
     switch (operator) {
@@ -66,11 +63,9 @@ const calcResult = operate(number1, number2, operator);
 
 // Calculator DOM UI
 
-
 resultDisplay.textContent = "RESULT: " + calcResult;
 
 // Calculator Clear Button - not working
-
 const clearButton = document.getElementById("CLEAR");
 
 clearButton.addEventListener("click", () => {
