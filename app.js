@@ -21,7 +21,7 @@ let resetScreen = false;
 let clearDisplay = ""
 
 
-// Calculator logic
+// Calculator logic for numbers 1-9 and 0 selection
 const resultDisplay = document.getElementById("result");
 const readButton = document.querySelectorAll(".number");
 const downscaledDisplay = document.getElementById("result");
