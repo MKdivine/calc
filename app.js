@@ -78,3 +78,26 @@ const video = document.getElementById("bg-video");
   video.playbackRate = 0.1; // 0.5 = halb so schnell, 1 = normal, 2 = doppelt so schnell
 
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.video-background video');
+    
+    if (!video) {
+        console.error('Video element not found!');
+        return;
+    }
+
+    // Handle video loading
+    video.addEventListener('error', function() {
+        console.error('Video failed to load:', video.error);
+    });
+
+    // Attempt to play (most browsers require muted autoplay)
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.catch(e => {
+            console.log('Autoplay prevented, adding fallback');
+            // Add a click-to-play overlay if needed
+        });
+    }
+});
