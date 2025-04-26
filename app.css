@@ -40,9 +40,9 @@ body {
 }
 
 .logo img {
-    max-height: 70px;
+    max-height: 80px;
     /* Maximale H—he */
-    max-width: 70px;
+    max-width: 80px;
     /* Maximale Breite */
     height: auto;
     /* Höhe proportional */
@@ -52,7 +52,7 @@ body {
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     box-shadow:
     0 0 5px #ff00ff,   /* Pink */
     0 0 10px #00ffff,    /* Cyan */
