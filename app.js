@@ -14,21 +14,34 @@ let operator = "+";
 
 // Calculator save inputs
 
-let currentInput = "";
+// let currentInput = "";
 let previousInput = "";
 let currentOperator = "";
 let resetScreen = false;
+let clearDisplay = ""
 
 
 // Calculator logic
-let readButton = document.querySelectorAll(".number");
+const resultDisplay = document.getElementById("result");
+const readButton = document.querySelectorAll(".number");
+const downscaledDisplay = document.getElementById("result");
+let currentInput = "";
+
 readButton.forEach(button => {
     button.addEventListener("click", () => {
-        console.log(button.textContent);
-        resultDisplay.textContent = button.textContent; // or any other logic you want when a number is clicked
+        currentInput += button.textContent;
+        resultDisplay.textContent = currentInput;  // Update display each time
+        console.log(currentInput);
+        if(currentInput.length > 8) {
+            downscaledDisplay.style.fontSize = "42px";
+        }
+        if(currentInput.length > 10) {
+            downscaledDisplay.style.fontSize = "38px";
+        }
+        
     });
 });
-9
+
 
 const operate = (a, b, operator) => {
     switch (operator) {
@@ -47,7 +60,7 @@ const calcResult = operate(number1, number2, operator);
 
 
 // Calculator DOM UI
-const resultDisplay = document.getElementById("result");
+
 
 resultDisplay.textContent = "RESULT: " + calcResult;
 
@@ -56,7 +69,8 @@ resultDisplay.textContent = "RESULT: " + calcResult;
 const clearButton = document.getElementById("CLEAR");
 
 clearButton.addEventListener("click", () => {
-    resultDisplay.textContent = "RESULT:   ";
+    currentInput = "";
+    resultDisplay.textContent = "";
 });
 
 //video background control
