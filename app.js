@@ -49,37 +49,39 @@ let inputOne = readButton.forEach((button) => {
 
 });
 
-operaterButton.forEach((button) => {
+operatorButtton.forEach((button) => {
     button.addEventListener("click", function () {
-        if(button) {
+        if (button) {
             inputOne = previousInput;
             previousInput = a;
             currentInput = inputOne
-            
+
+            inputOne = b;
+
         }
         const operate = (a, b, operator) => {
             switch (operator) {
                 case "+":
                     return addNumbers(a, b);
-            
+
             }
         }
         const calcResult = operate(number1, number2, operator);
-})
+    })
 
 
 
 
 
-// Calculator DOM UI
+    // Calculator DOM UI
 
-resultDisplay.textContent = "RESULT: " + calcResult;
+    resultDisplay.textContent = "RESULT: " + calcResult;
 
-// Calculator Clear Button - not working
-const clearButton = document.getElementById("CLEAR");
+    // Calculator Clear Button - not working
+    const clearButton = document.getElementById("CLEAR");
 
-clearButton.addEventListener("click", () => {
-    currentInput = "";
-    resultDisplay.textContent = "";
-});
+    clearButton.addEventListener("click", () => {
+        currentInput = "";
+        resultDisplay.textContent = "";
+    });
 
