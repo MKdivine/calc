@@ -25,11 +25,12 @@ let clearDisplay = ""
 const resultDisplay = document.getElementById("result");
 const readButton = document.querySelectorAll(".number");
 const downscaledDisplay = document.getElementById("result");
+const operatorButton = document.querySelectorAll(".operator");
 let currentInput = "";
 
 let inputOne = readButton.forEach((button) => {
     button.addEventListener("click", function () {
-        currentInput + button.textContent
+        currentInput += button.textContent
         resultDisplay.textContent = currentInput
         if (currentInput.length > 9) {
             downscaledDisplay.style.fontSize = "40px";
@@ -40,24 +41,33 @@ let inputOne = readButton.forEach((button) => {
         if (currentInput.length > 11) {
             downscaledDisplay.style.fontSize = "36px";
         }
+        if (currentInput.length > 12) {
+            downscaledDisplay.style.fontSize = "34px";
+        }
 
     });
 
 });
 
-const operate = (a, b, operator) => {
-    switch (operator) {
-        case "+":
-            return addNumbers(a, b);
-        case "-":
-            return subtractNumbers(a, b);
-        case "*":
-            return multiplyNumbers(a, b);
-        case "/":
-            return divideNumbers(a, b);
-    }
-}
-const calcResult = operate(number1, number2, operator);
+operaterButton.forEach((button) => {
+    button.addEventListener("click", function () {
+        if(button) {
+            inputOne = previousInput;
+            previousInput = a;
+            currentInput = inputOne
+            
+        }
+        const operate = (a, b, operator) => {
+            switch (operator) {
+                case "+":
+                    return addNumbers(a, b);
+            
+            }
+        }
+        const calcResult = operate(number1, number2, operator);
+})
+
+
 
 
 
