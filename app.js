@@ -3,6 +3,7 @@ const addNumbers = (a, b) => a + b;
 const subtractNumbers = (a, b) => a - b;
 const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
+
 // All functions work in console on firefox
 
 // Logic for inputs without prompt
@@ -17,6 +18,8 @@ function getNextInput() {
 
 const firstInput = getNextInput(); // Wird 'a' sein
 const secondInput = getNextInput(); // Wird 'b' sein
+let currentInput = "";
+let calcResult = "";
 
 // Calc logic for results in ui
 const resultDisplay = document.getElementById("result");
@@ -24,7 +27,17 @@ const downscaledDisplay = document.getElementById("result");
 // Calculator logic number, operator selection
 const readButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
-let currentInput = "";
+
+// -------------------------------- Code for Calculator -------------------------------------- //
+
+
+// Calculator Clear Button 
+const clearButton = document.getElementById("CLEAR");
+
+clearButton.addEventListener("click", () => {
+    currentInput = "";
+    resultDisplay.textContent = "cleared";
+});
 
 firstInput, secondInput = readButton.forEach((button) => {
     button.addEventListener("click", function () {
@@ -47,8 +60,8 @@ firstInput, secondInput = readButton.forEach((button) => {
 
 });
 
-let calcResult = "";
 
+// Calculator Operator Button and math functions
 operatorButton.forEach((button) => {
     button.addEventListener("click", function () {
         if (button === "+") {   
@@ -58,18 +71,10 @@ operatorButton.forEach((button) => {
             
             let calcResult = addNumbers(firstInput, secondInput);
             calcResult = resultDisplay.textContent;
-            return calcResult;
+            
         }
     });
 
 })
 
-
-// Calculator Clear Button 
-const clearButton = document.getElementById("CLEAR");
-
-clearButton.addEventListener("click", () => {
-    currentInput = "";
-    resultDisplay.textContent = "";
-});
 
