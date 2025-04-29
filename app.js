@@ -1,34 +1,32 @@
 // Calculator functions
-
 const addNumbers = (a, b) => a + b;
 const subtractNumbers = (a, b) => a - b;
 const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
 // All functions work in console on firefox
 
-// Calculator logic default
+// Logic for inputs without prompt
+const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
+let currentInputIndex = 0;
 
-let number1 = 86;
-let number2 = 2;
-let operator = "+";
+function getNextInput() {
+    const input = inputs[currentInputIndex];
+    currentInputIndex++;
+    return input;
+}
 
-// Calculator save inputs
+const firstInput = getNextInput(); // Wird 'a' sein
+const secondInput = getNextInput(); // Wird 'b' sein
 
-// let currentInput = "";
-let previousInput = "";
-let currentOperator = "";
-let resetScreen = false;
-let clearDisplay = ""
-
-
-// Calculator logic for numbers 1-9 and 0 selection
+// Calc logic for results in ui
 const resultDisplay = document.getElementById("result");
-const readButton = document.querySelectorAll(".number");
 const downscaledDisplay = document.getElementById("result");
+// Calculator logic number, operator selection
+const readButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 let currentInput = "";
 
-let inputOne = readButton.forEach((button) => {
+firstInput, secondInput = readButton.forEach((button) => {
     button.addEventListener("click", function () {
         currentInput += button.textContent
         resultDisplay.textContent = currentInput
@@ -49,39 +47,29 @@ let inputOne = readButton.forEach((button) => {
 
 });
 
-operatorButtton.forEach((button) => {
+let calcResult = "";
+
+operatorButton.forEach((button) => {
     button.addEventListener("click", function () {
-        if (button) {
-            inputOne = previousInput;
-            previousInput = a;
-            currentInput = inputOne
-
-            inputOne = b;
-
+        if (button === "+") {   
+            
+            resultDisplay.textContent = "";
+            secondInput()
+            
+            let calcResult = addNumbers(firstInput, secondInput);
+            calcResult = resultDisplay.textContent;
+            return calcResult;
         }
-        const operate = (a, b, operator) => {
-            switch (operator) {
-                case "+":
-                    return addNumbers(a, b);
-
-            }
-        }
-        const calcResult = operate(number1, number2, operator);
-    })
-
-
-
-
-
-    // Calculator DOM UI
-
-    resultDisplay.textContent = "RESULT: " + calcResult;
-
-    // Calculator Clear Button - not working
-    const clearButton = document.getElementById("CLEAR");
-
-    clearButton.addEventListener("click", () => {
-        currentInput = "";
-        resultDisplay.textContent = "";
     });
+
+})
+
+
+// Calculator Clear Button 
+const clearButton = document.getElementById("CLEAR");
+
+clearButton.addEventListener("click", () => {
+    currentInput = "";
+    resultDisplay.textContent = "";
+});
 
