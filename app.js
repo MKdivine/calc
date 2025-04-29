@@ -65,9 +65,13 @@ getNextInput = numButtons.forEach((button) => {
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
         console.log(button.textContent)
-        if (button.textContent === "+") {   
-        return resultDisplay.textContent = "";
-            
+        if (button.textContent === "+") {
+            return resultDisplay.textContent = "";
+        }
+        if (button.textContent === "=") {
+               return resultDisplay.textContent = addNumbers(parseInt(firstInput), parseInt(secondInput));
+        }
+            }
         }
     });
 })
