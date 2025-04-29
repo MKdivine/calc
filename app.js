@@ -25,8 +25,8 @@ let calcResult = "";
 const resultDisplay = document.getElementById("result");
 const downscaledDisplay = document.getElementById("result");
 // Calculator logic number, operator selection
-const readButton = document.querySelectorAll(".number");
-const operatorButton = document.querySelectorAll(".operator");
+const numButtons = document.querySelectorAll(".number");
+const operatorButtons = document.querySelectorAll(".operator");
 
 // -------------------------------- Code for Calculator -------------------------------------- //
 
@@ -39,7 +39,7 @@ clearButton.addEventListener("click", () => {
     resultDisplay.textContent = "cleared";
 });
 
-firstInput, secondInput = readButton.forEach((button) => {
+getNextInput = numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         currentInput += button.textContent
         resultDisplay.textContent = currentInput
@@ -62,19 +62,14 @@ firstInput, secondInput = readButton.forEach((button) => {
 
 
 // Calculator Operator Button and math functions
-operatorButton.forEach((button) => {
+operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        if (button === "+") {   
-            
-            resultDisplay.textContent = "";
-            secondInput()
-            
-            let calcResult = addNumbers(firstInput, secondInput);
-            calcResult = resultDisplay.textContent;
+        console.log(button.textContent)
+        if (button.textContent === "+") {   
+        return resultDisplay.textContent = "";
             
         }
     });
-
 })
 
 
