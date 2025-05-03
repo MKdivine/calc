@@ -1,7 +1,9 @@
-const firstInput = getNextInput(); // Wird 'a' sein
-const secondInput = getNextInput(); // Wird 'b' sein
 let currentInput = "";
 let calcResult = "";
+let firstNumber = null;  // Erste Zahl
+let currentOperator = null;  // Operator (+, -, *, /)
+let waitingForSecondNumber = false;  // Warten auf die zweite Zahl? 
+
 
 // Logic for inputs without prompt
 const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -12,6 +14,8 @@ function getNextInput() {
     currentInputIndex++;
     return input;
 }
+const firstInput = getNextInput(); // Wird 'a' sein
+const secondInput = getNextInput(); // Wird 'b' sein
 
 // Calculator functions
 const addNumbers = (a, b) => a + b;
@@ -41,42 +45,53 @@ clearButton.addEventListener("click", () => {
     resultDisplay.textContent = "cleared";
 });
 
-getNextInput = numButtons.forEach((button) => {
+
+// Nutzereingabe
+firstNumber, secondNumber = numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         currentInput += button.textContent
         resultDisplay.textContent = currentInput
-        if (currentInput.length > 9) {
-            downscaledDisplay.style.fontSize = "40px";
-        }
-        if (currentInput.length > 10) {
-            downscaledDisplay.style.fontSize = "38px";
-        }
-        if (currentInput.length > 11) {
-            downscaledDisplay.style.fontSize = "36px";
-        }
-        if (currentInput.length > 12) {
-            downscaledDisplay.style.fontSize = "34px";
-        }
-
     });
 
 });
-
 
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
 
         if (button.textContent === "+") {
-            return resultDisplay.textContent = "";
-            getNextInput();
+            resultDisplay.textContent = "";
+           
         }
         if (button.textContent === "=") {
             return resultDisplay.textContent = addNumbers(a), (b);
         }
-
-
     });
 })
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+     // In Nutzereingabe wiedereinfügen
+    // if (currentInput.length > 9) {
+        //     downscaledDisplay.style.fontSize = "40px";
+        // }
+        // if (currentInput.length > 10) {
+        //     downscaledDisplay.style.fontSize = "38px";
+        // }
+        // if (currentInput.length > 11) {
+        //     downscaledDisplay.style.fontSize = "36px";
+        // }
+        // if (currentInput.length > 12) {
+        //     downscaledDisplay.style.fontSize = "34px";
+        // }
