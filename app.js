@@ -1,10 +1,7 @@
-// Calculator functions
-const addNumbers = (a, b) => a + b;
-const subtractNumbers = (a, b) => a - b;
-const multiplyNumbers = (a, b) => a * b;
-const divideNumbers = (a, b) => a / b;
-
-// All functions work in console on firefox
+const firstInput = getNextInput(); // Wird 'a' sein
+const secondInput = getNextInput(); // Wird 'b' sein
+let currentInput = "";
+let calcResult = "";
 
 // Logic for inputs without prompt
 const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -16,10 +13,15 @@ function getNextInput() {
     return input;
 }
 
-const firstInput = getNextInput(); // Wird 'a' sein
-const secondInput = getNextInput(); // Wird 'b' sein
-let currentInput = "";
-let calcResult = "";
+// Calculator functions
+const addNumbers = (a, b) => a + b;
+const subtractNumbers = (a, b) => a - b;
+const multiplyNumbers = (a, b) => a * b;
+const divideNumbers = (a, b) => a / b;
+
+// All functions work in console on firefox
+
+
 
 // Calc logic for results in ui
 const resultDisplay = document.getElementById("result");
@@ -64,15 +66,16 @@ getNextInput = numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        console.log(button.textContent)
+
         if (button.textContent === "+") {
             return resultDisplay.textContent = "";
+            getNextInput();
         }
         if (button.textContent === "=") {
-               return resultDisplay.textContent = addNumbers(parseInt(firstInput), parseInt(secondInput));
+            return resultDisplay.textContent = addNumbers(a), (b);
         }
-            }
-        }
+
+
     });
 })
 
