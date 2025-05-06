@@ -65,13 +65,15 @@ operatorButtons.forEach((button) => {
                 resultDisplay.textContent = result;
             }
             if (operator === "/") {
+                
                 result = divideNumbers(firstNum, secondNum);
                 resultDisplay.textContent = result;
             }
         } else {
             firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
             operator = button.textContent;  // Operator merken (z. B. "+")
-            userInput = "";                     // Zurücksetzen für die zweite Zahl
+            userInput = "";
+                                 // Zurücksetzen für die zweite Zahl
         }
     });
 });
