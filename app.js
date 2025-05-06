@@ -28,7 +28,7 @@ numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         userInput += button.textContent
         resultDisplay.textContent = userInput
-        if (userInput.length > 9) {
+        if (userInput.length > 9) { // Herunterskalieren der Schrift im Display
             downscaledDisplay.style.fontSize = "40px";
         }
         if (userInput.length > 10) {
@@ -84,10 +84,10 @@ clearButton.addEventListener("click", () => {
     resultDisplay.textContent = "cleared";
     setTimeout(function() {
         document.getElementById("result").textContent = "";
-        resultDisplay.style.fontSize = "48px";
+        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
     }, 2000); // 
-    result = "";
-    operator = "";
+    result = ""; // Ergebnis zurücksetzen
+    operator = ""; // Operator zurücksetzen
 });
 
 
