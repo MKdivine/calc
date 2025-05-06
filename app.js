@@ -1,9 +1,9 @@
 let currentInput = "";
 let calcResult = "";
-let ersteZahl = null;      // Hier speichern wir die erste Zahl (z. B. 5)
-let zweiteZahl = null;     // Hier speichern wir die zweite Zahl (z. B. 3)
+let firstNum = null;      // Hier speichern wir die erste Zahl (z. B. 5)
+let secondNum = null;     // Hier speichern wir die zweite Zahl (z. B. 3)
 let operator = null;       // Hier speichern wir +, -, *, /
-let aktuellerInput = "";   // Hier sammeln wir die Ziffern, die der Benutzer drückt
+let userInput = "";   // Hier sammeln wir die Ziffern, die der Benutzer drückt
 
 // Logic for inputs without prompt 
 // const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -36,7 +36,7 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 
 // Nutzereingabe
-aktuellerInput = numButtons.forEach((button) => {
+userInput = numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         currentInput += button.textContent
         resultDisplay.textContent = currentInput
@@ -47,8 +47,8 @@ aktuellerInput = numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        aktuellerInput = ersteZahl 
-        aktuellerInput = "";
+        userInput = firstNum 
+        userInput = "";
         operator = button.textContent
         resultDisplay.textContent = operator
 
