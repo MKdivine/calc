@@ -1,21 +1,20 @@
 let currentInput = "";
 let calcResult = "";
-let firstNumber = null;  // Erste Zahl
-let currentOperator = null;  // Operator (+, -, *, /)
-let waitingForSecondNumber = false;  // Warten auf die zweite Zahl? 
+let ersteZahl = null;      // Hier speichern wir die erste Zahl (z. B. 5)
+let zweiteZahl = null;     // Hier speichern wir die zweite Zahl (z. B. 3)
+let operator = null;       // Hier speichern wir +, -, *, /
+let aktuellerInput = "";   // Hier sammeln wir die Ziffern, die der Benutzer drückt
 
-
-// Logic for inputs without prompt
-const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
-let currentInputIndex = 0;
-
-function getNextInput() {
-    const input = inputs[currentInputIndex];
-    currentInputIndex++;
-    return input;
-}
-const firstInput = getNextInput(); // Wird 'a' sein
-const secondInput = getNextInput(); // Wird 'b' sein
+// Logic for inputs without prompt 
+// const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
+// let currentInputIndex = 0;
+//  function getNextInput() {
+//     const input = inputs[currentInputIndex];
+//     currentInputIndex++;
+//     return input;
+// }
+// const firstInput = getNextInput(); // Wird 'a' sein
+// const secondInput = getNextInput(); // Wird 'b' sein
 
 // Calculator functions
 const addNumbers = (a, b) => a + b;
@@ -24,7 +23,6 @@ const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
 
 // All functions work in console on firefox
-
 
 
 // Calc logic for results in ui
@@ -37,17 +35,8 @@ const operatorButtons = document.querySelectorAll(".operator");
 // -------------------------------- Code for Calculator -------------------------------------- //
 
 
-// Calculator Clear Button 
-const clearButton = document.getElementById("CLEAR");
-
-clearButton.addEventListener("click", () => {
-    currentInput = "";
-    resultDisplay.textContent = "cleared";
-});
-
-
 // Nutzereingabe
-firstNumber, secondNumber = numButtons.forEach((button) => {
+aktuellerInput = numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         currentInput += button.textContent
         resultDisplay.textContent = currentInput
@@ -58,19 +47,22 @@ firstNumber, secondNumber = numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
+        aktuellerInput = ersteZahl 
+        aktuellerInput = "";
+        operator = button.textContent
+        resultDisplay.textContent = operator
 
-        if (button.textContent === "+") {
-            resultDisplay.textContent = "";
-           
-        }
-        if (button.textContent === "=") {
-            return resultDisplay.textContent = addNumbers(a), (b);
-        }
     });
 })
 
 
+// Calculator Clear Button 
+const clearButton = document.getElementById("CLEAR");
 
+clearButton.addEventListener("click", () => {
+    currentInput = "";
+    resultDisplay.textContent = "cleared";
+});
 
 
 
