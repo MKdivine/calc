@@ -83,8 +83,8 @@ clearButton.addEventListener("click", () => {
     userInput = "";
     resultDisplay.textContent = "cleared";
     setTimeout(function() {
-        document.getElementById("result").style.display = "none";
-    }, 2000); // 3000 Millisekunden = 3 Sekunden
+        document.getElementById("result").textContent = "";
+    }, 2000); // 
     result = "";
     operator = "";
 });
