@@ -84,6 +84,7 @@ clearButton.addEventListener("click", () => {
     resultDisplay.textContent = "cleared";
     setTimeout(function() {
         document.getElementById("result").textContent = "";
+        resultDisplay.style.fontSize = "48px";
     }, 2000); // 
     result = "";
     operator = "";
