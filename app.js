@@ -5,24 +5,11 @@ let operator = "";       // Hier speichern wir +, -, *, /
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 
-
-// Logic for inputs without prompt 
-// const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
-// let currentInputIndex = 0;
-//  function getNextInput() {
-//     const input = inputs[currentInputIndex];
-//     currentInputIndex++;
-//     return input;
-// }
-// const firstInput = getNextInput(); // Wird 'a' sein
-// const secondInput = getNextInput(); // Wird 'b' sein
-
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => a - b;
 const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
-
 // All functions work in console on firefox
 
 
@@ -41,7 +28,21 @@ numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         userInput += button.textContent
         resultDisplay.textContent = userInput
-
+        if (userInput.length > 9) {
+            downscaledDisplay.style.fontSize = "40px";
+        }
+        if (userInput.length > 10) {
+            downscaledDisplay.style.fontSize = "38px";
+        }
+        if (userInput.length > 11) {
+            downscaledDisplay.style.fontSize = "36px";
+        }
+        if (userInput.length > 12) {
+            downscaledDisplay.style.fontSize = "34px";
+        }
+        else {
+            downscaledDisplay.style.fontSize = "46px";
+        }
     });
 
 });
@@ -94,15 +95,3 @@ clearButton.addEventListener("click", () => {
 
 
 // In Nutzereingabe wiedereinfügen
-// if (currentInput.length > 9) {
-//     downscaledDisplay.style.fontSize = "40px";
-// }
-// if (currentInput.length > 10) {
-//     downscaledDisplay.style.fontSize = "38px";
-// }
-// if (currentInput.length > 11) {
-//     downscaledDisplay.style.fontSize = "36px";
-// }
-// if (currentInput.length > 12) {
-//     downscaledDisplay.style.fontSize = "34px";
-// }
