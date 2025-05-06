@@ -5,7 +5,6 @@ let operator = "";       // Hier speichern wir +, -, *, /
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 
-let numMem = ""; // Hier speichern wir das Ergebnis der vorherigen Berechnung
 
 // Logic for inputs without prompt 
 // const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -50,29 +49,31 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        userInput = firstNum;
-        console.log(firstNum);
-        userInput = "";
-        operator = button.textContent;
-        resultDisplay.textContent = operator;
-
-
-        if (operator == "+") {
-            userInput = secondNum;
-            console.log(secondNum);
-            result = addNumbers(firstNum, secondNum);
-
+        if (button.textContent === "=") {
+            secondNum = userInput;
+            if (operator === "+") {
+                result = addNumbers(firstNum, secondNum);
+                resultDisplay.textContent = result;
+            }
+            if (operator === "-") {
+                result = subtractNumbers(firstNum, secondNum);
+                resultDisplay.textContent = result;
+            }
+            if (operator === "*") {
+                result = multiplyNumbers(firstNum, secondNum);
+                resultDisplay.textContent = result;
+            }
+            if (operator === "/") {
+                result = divideNumbers(firstNum, secondNum);
+                resultDisplay.textContent = result;
+            }
+        } else {
+            firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
+            operator = button.textContent;  // Operator merken (z. B. "+")
+            userInput = "";                     // Zurücksetzen für die zweite Zahl
         }
-
-        if (operator == "=") {
-
-            resultDisplay.textContent = result;
-
-        }
-
     });
-})
-
+});
 
 // Calculator Clear Button 
 const clearButton = document.getElementById("CLEAR");
