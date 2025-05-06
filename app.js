@@ -82,6 +82,8 @@ const clearButton = document.getElementById("CLEAR");
 clearButton.addEventListener("click", () => {
     userInput = "";
     resultDisplay.textContent = "cleared";
+    result = "";
+    operator = "";
 });
 
 
