@@ -1,9 +1,9 @@
-let currentInput = "";
-let calcResult = "";
+
 let firstNum = null;      // Hier speichern wir die erste Zahl (z. B. 5)
 let secondNum = null;     // Hier speichern wir die zweite Zahl (z. B. 3)
 let operator = null;       // Hier speichern wir +, -, *, /
-let userInput = "";   // Hier sammeln wir die Ziffern, die der Benutzer drückt
+let userInput = ""; 
+let result = ""  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 
 // Logic for inputs without prompt 
 // const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -36,10 +36,11 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 
 // Nutzereingabe
-userInput = numButtons.forEach((button) => {
+numButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        currentInput += button.textContent
-        resultDisplay.textContent = currentInput
+        userInput += button.textContent
+        resultDisplay.textContent = userInput
+        return userInput;
     });
 
 });
@@ -47,10 +48,23 @@ userInput = numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        userInput = firstNum 
+        userInput = firstNum; 
         userInput = "";
-        operator = button.textContent
-        resultDisplay.textContent = operator
+        operator = button.textContent;
+        resultDisplay.textContent = operator;
+
+        
+        if(operator == "+") {
+            userInput = secondNum;
+            result = addNumbers(firstNum, secondNum);
+            
+        }    
+
+        if(operator == "=") {
+            
+            resultDisplay.textContent = result;
+      
+        }
 
     });
 })
@@ -60,7 +74,7 @@ operatorButtons.forEach((button) => {
 const clearButton = document.getElementById("CLEAR");
 
 clearButton.addEventListener("click", () => {
-    currentInput = "";
+    userInput = "";
     resultDisplay.textContent = "cleared";
 });
 
