@@ -1,9 +1,11 @@
 
-let firstNum = null;      // Hier speichern wir die erste Zahl (z. B. 5)
-let secondNum = null;     // Hier speichern wir die zweite Zahl (z. B. 3)
-let operator = null;       // Hier speichern wir +, -, *, /
-let userInput = ""; 
-let result = ""  // Hier sammeln wir die Ziffern, die der Benutzer drückt
+let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
+let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
+let operator = "";       // Hier speichern wir +, -, *, /
+let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
+let result = ""  // Hier speichern wir das Ergebnis der Berechnung
+
+let numMem = ""; // Hier speichern wir das Ergebnis der vorherigen Berechnung
 
 // Logic for inputs without prompt 
 // const inputs = ['a', 'b']; // Die erste Eingabe ist 'a', die zweite 'b'
@@ -17,7 +19,7 @@ let result = ""  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 // const secondInput = getNextInput(); // Wird 'b' sein
 
 // Calculator functions
-const addNumbers = (a, b) => a + b;
+const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => a - b;
 const multiplyNumbers = (a, b) => a * b;
 const divideNumbers = (a, b) => a / b;
@@ -40,7 +42,7 @@ numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         userInput += button.textContent
         resultDisplay.textContent = userInput
-        return userInput;
+
     });
 
 });
@@ -48,22 +50,24 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        userInput = firstNum; 
+        userInput = firstNum;
+        console.log(firstNum);
         userInput = "";
         operator = button.textContent;
         resultDisplay.textContent = operator;
 
-        
-        if(operator == "+") {
-            userInput = secondNum;
-            result = addNumbers(firstNum, secondNum);
-            
-        }    
 
-        if(operator == "=") {
-            
+        if (operator == "+") {
+            userInput = secondNum;
+            console.log(secondNum);
+            result = addNumbers(firstNum, secondNum);
+
+        }
+
+        if (operator == "=") {
+
             resultDisplay.textContent = result;
-      
+
         }
 
     });
@@ -88,16 +92,16 @@ clearButton.addEventListener("click", () => {
 
 
 
-     // In Nutzereingabe wiedereinfügen
-    // if (currentInput.length > 9) {
-        //     downscaledDisplay.style.fontSize = "40px";
-        // }
-        // if (currentInput.length > 10) {
-        //     downscaledDisplay.style.fontSize = "38px";
-        // }
-        // if (currentInput.length > 11) {
-        //     downscaledDisplay.style.fontSize = "36px";
-        // }
-        // if (currentInput.length > 12) {
-        //     downscaledDisplay.style.fontSize = "34px";
-        // }
+// In Nutzereingabe wiedereinfügen
+// if (currentInput.length > 9) {
+//     downscaledDisplay.style.fontSize = "40px";
+// }
+// if (currentInput.length > 10) {
+//     downscaledDisplay.style.fontSize = "38px";
+// }
+// if (currentInput.length > 11) {
+//     downscaledDisplay.style.fontSize = "36px";
+// }
+// if (currentInput.length > 12) {
+//     downscaledDisplay.style.fontSize = "34px";
+// }
