@@ -96,7 +96,7 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     filter: 
         brightness(1.0) 
         contrast(1.5) 
-        hue-rotate(90deg)   /* Grün-Ton */
+        saturate(1.5)
         drop-shadow(0 0 8px #00ff00);
 }
 
@@ -156,7 +156,8 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
 
 /* Button-Container */
 .calcShell {
-    display: flex;
+    display: fixed;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     background-color: #4520c9;

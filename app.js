@@ -8,6 +8,9 @@ let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 
 let savedResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 
+
+
+
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => a - b;
@@ -17,9 +20,8 @@ const divideNumbers = (a, b) => Math.round(a / b * 100) / 100;
 
 
 // Calc logic for results in ui
-const resultDisplay = document.getElementById("result").maxLength = 12; // Maximale Länge der Eingabe auf 12 Zeichen setzen
-const downscaledDisplay = document.getElementById("result");
-// Calculator logic number, operator selection
+const resultDisplay = document.getElementById("result")
+resultDisplay.maxLength = 12;
 const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 
@@ -29,25 +31,16 @@ const operatorButtons = document.querySelectorAll(".operator");
 // Nutzereingabe
 numButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        userInput += button.textContent
-        
+        if(userInput.length < 20) { // Maximale Länge der Eingabe auf 20 Zeichen beschränken
+        userInput += button.textContent; // Hier wird die Zahl gespeichert, die der Benutzer drückt
         resultDisplay.textContent = userInput
-       
-        if (userInput.length > 9) { // Herunterskalieren der Schrift im Display
-            downscaledDisplay.style.fontSize = "40px";
-        }
-        if (userInput.length > 10) {
-            downscaledDisplay.style.fontSize = "38px";
-        }
-        if (userInput.length > 11) {
-            downscaledDisplay.style.fontSize = "36px";
-        }
-        if (userInput.length > 12) {
-            downscaledDisplay.style.fontSize = "34px";
-        }
-        else {
-            downscaledDisplay.style.fontSize = "46px";
-        }
+
+         // Code für die Schriftgröße
+        let baseSize = 48;
+        let shrink = Math.max(0, userInput.length - 9) * 2;
+        let fontSize = Math.max(32, baseSize - shrink); // niemals kleiner als 32px
+        resultDisplay.style.fontSize = fontSize + "px";
+        }        
     });
 
 });
