@@ -5,6 +5,9 @@ let operator = "";       // Hier speichern wir +, -, *, /
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 
+
+let savedResult = ""; // Hier speichern wir das Ergebnis der Berechnung
+
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => a - b;
@@ -14,7 +17,7 @@ const divideNumbers = (a, b) => Math.round(a / b * 100) / 100;
 
 
 // Calc logic for results in ui
-const resultDisplay = document.getElementById("result");
+const resultDisplay = document.getElementById("result").maxLength = 12; // Maximale Länge der Eingabe auf 12 Zeichen setzen
 const downscaledDisplay = document.getElementById("result");
 // Calculator logic number, operator selection
 const numButtons = document.querySelectorAll(".number");
@@ -27,7 +30,9 @@ const operatorButtons = document.querySelectorAll(".operator");
 numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         userInput += button.textContent
+        
         resultDisplay.textContent = userInput
+       
         if (userInput.length > 9) { // Herunterskalieren der Schrift im Display
             downscaledDisplay.style.fontSize = "40px";
         }
