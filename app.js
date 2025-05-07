@@ -52,28 +52,39 @@ operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
         if (button.textContent === "=") {
             secondNum = userInput;
-            if (operator === "+") {
-                result = addNumbers(firstNum, secondNum);
-                resultDisplay.textContent = result;
-            }
-            if (operator === "-") {
-                result = subtractNumbers(firstNum, secondNum);
-                resultDisplay.textContent = result;
-            }
-            if (operator === "*") {
-                result = multiplyNumbers(firstNum, secondNum);
-                resultDisplay.textContent = result;
-            }
-            if (operator === "/") {
-                
-                result = divideNumbers(firstNum, secondNum);
-                resultDisplay.textContent = result;
-            }
+
+        }
+        if (operator === "+") {
+            result = addNumbers(firstNum, secondNum);
+            resultDisplay.textContent = result;
+        }
+        if (operator === "-") {
+            result = subtractNumbers(firstNum, secondNum);
+            resultDisplay.textContent = result;
+        }
+        if (operator === "*") {
+            result = multiplyNumbers(firstNum, secondNum);
+            resultDisplay.textContent = result;
+        }
+        if (operator === "/") {
+
+            result = divideNumbers(firstNum, secondNum);
+            resultDisplay.textContent = result;
+        }
+        if (operator === "/" && userInput === "0") {
+            resultDisplay.textContent = "Error :o";
+            setTimeout(function () {
+                document.getElementById("result").textContent = "";
+                resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
+            }, 2000); // 
+            result = ""; // Ergebnis zurücksetzen
+            operator = ""; // Operator zurücksetzen
+
         } else {
             firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
             operator = button.textContent;  // Operator merken (z. B. "+")
             userInput = "";
-                                 // Zurücksetzen für die zweite Zahl
+            // Zurücksetzen für die zweite Zahl
         }
     });
 });
@@ -84,7 +95,7 @@ const clearButton = document.getElementById("CLEAR");
 clearButton.addEventListener("click", () => {
     userInput = "";
     resultDisplay.textContent = "cleared";
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById("result").textContent = "";
         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
     }, 2000); // 
