@@ -69,7 +69,7 @@ operatorButtons.forEach((button) => {
                     resultDisplay.textContent = result;
                     break;
                 case "-":
-                    result = substratNumbers(firstNum, secondNum);
+                    result = subtractNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
                     break;
                 case "*":
