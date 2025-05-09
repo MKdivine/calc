@@ -107,7 +107,7 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
 
 /* Titel */
 #title {
-    font-size: 92px;
+    font-size: 50px;
     font-variant: small-caps;
     text-align: center;
     font-weight: 700;
@@ -153,19 +153,26 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
 
 .calcShell {
     position: absolute;
-    top: 50%;
+    top: 58%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)scale(0.8);
+   .calcShell {
+    /* ... bestehende Styles ... */
+    max-width: 90%; /* Passt sich an die Bildschirmbreite an */
+    width: 300px; /* Standardbreite */
+}
 
-    /* Exakte Zentrierung */
+@media (max-width: 600px) {
+    .calcShell {
+        transform: translate(-50%, -50%) scale(0.6); /* Kleinere Skalierung für kleine Bildschirme */
+    }
+}
 }
 
 /* Button-Container */
 .calcShell {
     display: fixed;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+ 
     background-color: #4520c9;
     border-radius: 40px;
     padding: 22px;
