@@ -151,6 +151,7 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     top: 57%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     /* Exakte Zentrierung */
 }
 
@@ -162,8 +163,8 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     align-items: center;
     background-color: #4520c9;
     border-radius: 40px;
-    padding: 15px;
-    margin: 1px;
+    padding: 22px;
+
     /* 3D-Innenschatten + Außenschatten */
     box-shadow:
         inset -4px -4px 8px rgba(14, 11, 11, 0.5),

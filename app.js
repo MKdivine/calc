@@ -13,8 +13,8 @@ let savedResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
-const subtractNumbers = (a, b) => a - b;
-const multiplyNumbers = (a, b) => a * b;
+const subtractNumbers = (a, b) => Math.round(a - b)
+const multiplyNumbers = (a, b) => Math.round(a * b);
 const divideNumbers = (a, b) => Math.round(a / b * 100) / 100;
 // All functions work in console on firefox
 
@@ -109,6 +109,3 @@ clearButton.addEventListener("click", () => {
 
 
 
-
-
-// In Nutzereingabe wiedereinfügen
