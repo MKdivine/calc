@@ -9,8 +9,6 @@ let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 let savedResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 
 
-
-
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => Math.round(a - b)

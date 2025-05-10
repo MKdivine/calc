@@ -35,13 +35,17 @@ body {
 } 
 
 .loading {
-    text-align: left;
-    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loadingTwo {
-    text-align: right;
-    margin-right: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 10px;
 }
 
 .logo img {
