@@ -132,18 +132,7 @@ body {
   top: 58%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  .calcShell {
-    /* ... bestehende Styles ... */
-    max-width: 90%; /* Passt sich an die Bildschirmbreite an */
-    width: 200px; /* Standardbreite */
-  }
-
-  @media (max-width: 600px) {
-    .calcShell {
-      transform: translate(-50%, -50%) scale(0.6); /* Kleinere Skalierung für kleine Bildschirme */
-      transform: translateY(-10px); /* Leicht nach oben schieben */
-    }
-  }
+ 
 }
 
 /* Button-Container */
@@ -317,19 +306,30 @@ body {
 @media (max-width: 640px) {
   .calcShell {
     transform: translate(-50%, -50%) scale(0.8);
-    .title {
+    title {
       font-size: 20px;
     }
   }
 }
 @media (max-width: 400px) {
   .calcShell {
-    transform: translate(-50%, -50%) scale(0.6);
+    transform: translate(-50%, -50%) scale(0.7);
+      
+    
+  }
+  #title {
+    font-size: 40px;
   }
 }
 @media (max-width: 300px) {
   .calcShell {
-    transform: translate(-50%, -50%) scale(0.4);
+    transform: translate(-50%, -50%) scale(0.7);
+      
+  }
+  #title {
+    font-size: 40px;
   }
 }
+
+
 
