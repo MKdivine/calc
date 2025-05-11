@@ -65,6 +65,7 @@ operatorButtons.forEach((button) => {
                 case "+":
                     result = addNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
+                    result = savedResult;
                     break;
                 case "-":
                     result = subtractNumbers(firstNum, secondNum);

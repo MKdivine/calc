@@ -159,11 +159,11 @@ filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
     position: absolute;
     top: 58%;
     left: 50%;
-    transform: translate(-50%, -50%)scale(0.8);
+    transform: translate(-50%, -50%)scale(1);
    .calcShell {
     /* ... bestehende Styles ... */
     max-width: 90%; /* Passt sich an die Bildschirmbreite an */
-    width: 300px; /* Standardbreite */
+    width: 200px; /* Standardbreite */
 }
 
 @media (max-width: 600px) {
