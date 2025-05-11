@@ -104,8 +104,7 @@ clearButton.addEventListener("click", () => {
     operator = ""; // Operator zurücksetzen
 });
 
-
-
+/* SGPT shtop */
 
 
 
