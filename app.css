@@ -16,7 +16,7 @@ body {
 
 /* Hintergrundbild */
 .decoration {
-  display: inline-block; /* oder flex, je nach Bedarf */
+  display: inline; /* oder flex, je nach Bedarf */
   font-family: "Pixelify Sans", sans-serif;
   letter-spacing: 2px;
   font-size: 12px;
@@ -286,7 +286,18 @@ body {
       font-size: 8px;
     }
   }
-
+  @media (max-width: 1200px) {
+    .calcShell {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+  
+    #title {
+      font-size: 60px;
+    }
+    .loading .loadingTwo {
+      font-size: 8px;
+    }
+  }
 
 
 @media (max-width: 800px) {
@@ -322,4 +333,3 @@ body {
   }
 }
 
-/* Für sehr kleine Bildschirme (z. B. Handy) */
