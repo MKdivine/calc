@@ -136,16 +136,10 @@ body {
 }
 
 .calcShell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   background-color: #4520c9;
   border-radius: 40px;
   padding: 22px;
-
- 
   margin: 40px auto; /* Abstand zum Titel */
   box-shadow: inset -4px -4px 8px rgba(14, 11, 11, 0.5),
               inset 4px 4px 8px rgba(161, 117, 164, 0.748),
@@ -288,9 +282,7 @@ body {
     height: 60px;
     font-size: 28px;
   }
-  .buttons4 button {
-    width: 280px;
-  }
+
 }
 
 /* 🖥️ 1440p WQHD – ab 1920px bis 2559px */
@@ -306,14 +298,8 @@ body {
   .calcShell {
     transform: translate(-50%, -50%) scale(1.4);
   }
-  .calcShell button {
-    width: 70px;
-    height: 50px;
-    font-size: 24px;
-  }
-  .buttons4 button {
-    width: 240px;
-  }
+
+ 
 }
 
 /* 🧑‍💻 Full HD 1080p – ab 1280px bis 1919px */
@@ -329,21 +315,15 @@ body {
   .calcShell {
     transform: translate(-50%, -50%) scale(1.1);
   }
-  .calcShell button {
-    width: 60px;
-    height: 45px;
-    font-size: 22px;
-  }
-  .buttons4 button {
-    width: 200px;
-  }
+
+  
 }
 
 /* 📱 Mobile Geräte (Tablets & Smartphones) – bis 767px */
 @media (max-width: 767px) {
   #title {
-    font-size: 42px;
-    letter-spacing: 2px;
+    font-size: 40px;
+  
   }
   .display {
     font-size: 28px;
@@ -351,17 +331,11 @@ body {
     height: 40px;
   }
   .calcShell {
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -78%) scale(0.7);
     padding: 12px;
   }
-  .calcShell button {
-    width: 40px;
-    height: 35px;
-    font-size: 16px;
-  }
-  .buttons4 button {
-    width: 140px;
-  }
+ 
+
 }
 
 
