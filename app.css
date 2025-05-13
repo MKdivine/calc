@@ -1,194 +1,183 @@
+/* Globale Reset- und Box-Modell-Einstellungen */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  height: 100vh;
-  background-color: #f0f0f0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: "Pixelify Sans", sans-serif;
-  font-optical-sizing: auto;
+    height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
 }
 
-/* Hintergrundbild */
+/* Dekoration (Loading-Text) */
 .decoration {
-  display: inline; /* oder flex, je nach Bedarf */
-  font-family: "Pixelify Sans", sans-serif;
-  letter-spacing: 2px;
-  font-size: 12px;
-  color: #ff00ff;
-  text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 15px #ffff00;
-  animation: rgbGlow 2s infinite alternate;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  text-align: center;
+    display: inline-block; /* Besser als inline */
+    font-family: "Pixelify Sans", sans-serif;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #ff00ff;
+    text-shadow: 
+        0 0 5px #ff00ff, 
+        0 0 10px #00ffff, 
+        0 0 15px #ffff00;
+   
+    background-color: transparent; /* Expliziter als !important */
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    text-align: center;
 }
 
 .loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loadingTwo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 10px;
 }
 
+/* Logo */
 .logo img {
-  max-height: 80px;
-  /* Maximale H—he */
-  max-width: 80px;
-  /* Maximale Breite */
-  height: auto;
-  /* Höhe proportional */
-  border-radius: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  box-shadow: 0 0 5px #ff00ff, /* Pink */ 0 0 10px #00ffff,
-    /* Cyan */ 0 0 15px #ffff00; /* Gelb */
-  animation: rgbGlow 3s infinite alternate;
-  filter: brightness(1.1), blur(2px), contrast(1.5), saturate(1.5);
-  box-shadow: inset -4px -4px px rgba(14, 11, 11, 0.5),
-    inset 4px 4px 8px rgba(161, 117, 164, 0.748);
+    max-height: 80px;
+    max-width: 80px;
+    height: auto;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto 20px; /* Kombinierter Margin */
+    box-shadow: 
+        0 0 10px #ff00ff,   /* Pink */
+        0 0 20px #00ffff,   /* Cyan */
+        0 0 30px #ffff00;   /* Gelb */
+    animation: rgbGlow 3s infinite alternate;
+    filter: brightness(1) contrast(1.5) saturate(1.5) drop-shadow(0 0 8px #00ff00);
+    box-shadow: 
+        inset -4px -4px 0 rgba(14, 11, 11, 0.5), /* Schatten mit 0px Distanz */
+        inset 4px 4px 8px rgba(161, 117, 164, 0.748);
 }
+
 @keyframes rgbGlow {
-  0% {
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ffff00;
-  }
-  33% {
-    box-shadow: 0 0 15px #00ffff, 0 0 25px #ffff00, 0 0 15px #ff00ff;
-  }
-  66% {
-    box-shadow: 0 0 15px #ffff00, 0 0 25px #ff00ff, 0 0 15px #00ffff;
-  }
-  100% {
-    box-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 10px #ffff00;
-  }
-}
-
-.logo img {
-  /* ... bestehende Styles ... */
-  filter: brightness(1) contrast(1.5) saturate(1.5) drop-shadow(0 0 8px #00ff00);
+    0% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ffff00; }
+    33% { box-shadow: 0 0 15px #00ffff, 0 0 25px #ffff00, 0 0 15px #ff00ff; }
+    66% { box-shadow: 0 0 15px #ffff00, 0 0 25px #ff00ff, 0 0 15px #00ffff; }
+    100% { box-shadow: 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 10px #ffff00; }
 }
 
 /* Titel */
 #title {
-  font-size: 90px;
-  font-variant: small-caps;
-  text-align: center;
-  font-weight: 700;
-  color: #11dcf3;
-  letter-spacing: 6px;
-  text-decoration: underline solid #8b68ddfb;
-  text-shadow: 6px 2px 1px rgba(0, 0, 0, 0.6),
-    -1px -1px 2px rgba(255, 255, 255, 0.3), 0px 0px 12px rgba(17, 220, 243, 0.6);
+    font-size: 69px;
+    font-variant: small-caps;
+    text-align: center;
+    font-weight: 700;
+    color: #11dcf3;
+    letter-spacing: 6px;
+    text-decoration: underline solid #8b68ddfb;
+    text-shadow: 
+        6px 2px 1px rgba(0, 0, 0, 0.6),
+        -1px -1px 2px rgba(255, 255, 255, 0.3), 
+        0 0 12px rgba(17, 220, 243, 0.6);
 }
 
 /* Display */
 .display {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 46px;
-  font-weight: 600;
-  background-color: #20142c;
-  margin-bottom: 26px;
-  width: 170px;
-  height: 50px;
-  color: #5cdf05;
-  text-shadow: #170101 1px 2px 10px;
-  font-family: "Jersey 10", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 46px;
+    font-weight: 600;
+    background-color: #20142c;
+    margin-bottom: 26px;
+    width: 170px;
+    height: 50px;
+    color: #5cdf05;
+    text-shadow: #170101 1px 2px 10px;
+    font-family: "Jersey 10", sans-serif;
+    font-style: normal;
+    border-radius: 10px;
 }
 
 /* Allgemeiner Container */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
+/* Calculator Shell */
 .calcShell {
-  position: absolute;
-  top: 58%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
- 
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: #4520c9;
+    border-radius: 40px;
+    padding: 22px;
+    margin: -50px auto;
+    box-shadow: 
+        inset -4px -4px 8px rgba(14, 11, 11, 0.5),
+        inset 4px 4px 8px rgba(161, 117, 164, 0.748),
+        2px 8px 12px rgba(7, 0, 0, 0.74);
 }
-
-.calcShell {
-
-  background-color: #4520c9;
-  border-radius: 40px;
-  padding: 22px;
-  margin: 40px auto; /* Abstand zum Titel */
-  box-shadow: inset -4px -4px 8px rgba(14, 11, 11, 0.5),
-              inset 4px 4px 8px rgba(161, 117, 164, 0.748),
-              2px 8px 12px rgba(7, 0, 0, 0.74);
-}
-
-
-
 
 /* Gemeinsame Button-Styles */
 .calcShell button {
-  width: 50px;
-  height: 40px;
-  font-size: 24px;
-  background-color: #76dd22;
-  border: 1px solid #170101;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: "Jersey 10", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-
-  transition: background-color 0.2s, border 0.2s, box-shadow 0.2s,
-    transform 0.1s;
-
-  /* Plastischer Außenschatten */
-  box-shadow: 1px 6px 2px rgba(0, 0, 0, 0.5),
-    -1px -2px 2px rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 40px;
+    font-size: 24px;
+    background-color: #76dd22;
+    border: 1px solid #170101;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Jersey 10", sans-serif;
+    font-style: normal;
+    transition: 
+        background-color 0.2s, 
+        border 0.2s, 
+        box-shadow 0.2s,
+        transform 0.1s;
+    box-shadow: 
+        1px 6px 2px rgba(0, 0, 0, 0.5),
+        -1px -2px 2px rgba(255, 255, 255, 0.3);
 }
 
 /* Klick-Effekt */
 .calcShell button:active {
-  transform: translateY(2px);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
-    -1px -1px 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(2px);
+    box-shadow: 
+        1px 1px 3px rgba(0, 0, 0, 0.4),
+        -1px -1px 1px rgba(255, 255, 255, 0.2);
 }
 
 /* Hover-Effekt */
 .calcShell button:hover {
-  background-color: #cdee10;
-  border: 2px solid #170101;
+    background-color: #cdee10;
+    border-width: 2px; /* Kurzschreibweise */
 }
 
 /* Besondere Buttons (z.B. "=") */
 .buttons4 button {
-  width: 180px;
-  background-color: #eefa40;
-  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5),
-    -2px -2px 2px rgba(255, 255, 255, 0.3);
+    width: 180px;
+    background-color: #eefa40;
+    box-shadow: 
+        4px 4px 7px rgba(0, 0, 0, 0.5),
+        -2px -2px 2px rgba(255, 255, 255, 0.3);
 }
 
 /* Button-Reihen */
@@ -198,145 +187,85 @@ body {
 .buttonsOperator,
 .buttonsSide,
 .buttons4 {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin: 5px 0;
 }
 
-/* Video selbst */
+/* Video-Hintergrund */
 .video-background {
-  position: fixed;
-  /* Immer im Hintergrund */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
-  /* Hinter allem anderen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
 }
 
-/* /*   /* Video selbst */
 .video-background video {
-  width: 102%;
-  height: 102%;
-  position: absolute;
-  top: -1%;
-  left: -1%;
-  object-fit: cover;
-  object-position: center center;
-  pointer-events: none;
-  filter: blur(4px) brightness(0.8) contrast(0.1) saturate(20%)
-    hue-rotate(89deg);
-  animation: glitch 6s infinite;
-  will-change: transform, filter;
-  backface-visibility: hidden;
+    width: 102%;
+    height: 102%;
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    object-fit: cover;
+    object-position: center; /* Korrektur */
+    pointer-events: none;
+    filter: blur(4px) brightness(0.8) contrast(0.1) saturate(20%) hue-rotate(89deg);
+    animation: glitch 6s infinite;
+    will-change: transform, filter;
+    backface-visibility: hidden;
 }
 
 @keyframes glitch {
-  0% {
-    transform: translate(0) translateZ(0);
-    filter: hue-rotate(0deg);
-  }
-
-  20% {
-    transform: translate(-2px, 2px) translateZ(0);
-  }
-
-  40% {
-    transform: translate(2px, -2px) translateZ(0);
-    filter: hue-rotate(90deg);
-  }
-
-  60% {
-    transform: translate(-1px, 1px) translateZ(0);
-  }
-
-  80% {
-    transform: translate(1px, -1px) translateZ(0);
-    filter: hue-rotate(180deg);
-  }
-
-  100% {
-    transform: translate(0) translateZ(0);
-    filter: hue-rotate(0deg);
-  }
+    0%   { transform: translate(0) translateZ(0); filter: hue-rotate(0deg); }
+    20%  { transform: translate(-2px, 2px) translateZ(0); }
+    40%  { transform: translate(2px, -2px) translateZ(0); filter: hue-rotate(90deg); }
+    60%  { transform: translate(-1px, 1px) translateZ(0); }
+    80%  { transform: translate(1px, -1px) translateZ(0); filter: hue-rotate(180deg); }
+    100% { transform: translate(0) translateZ(0); filter: hue-rotate(0deg); }
 }
 
-/* 📺 4K Ultra HD – ab 2560px */
+/* Media Queries */
+
+/* 4K Ultra HD – ab 2560px */
 @media (min-width: 2560px) {
-  #title {
-    font-size: 140px;
-  }
-  .display {
-    font-size: 64px;
-    width: 320px;
-    height: 90px;
-  }
-  .calcShell {
-    transform: translate(-50%, -50%) scale(1.8);
-  }
-  .calcShell button {
-    width: 80px;
-    height: 60px;
-    font-size: 28px;
-  }
-
+    #title { font-size: 100px; }
+    .calcShell { transform: translate(-50%, -50%) scale(1.0); }
 }
 
-/* 🖥️ 1440p WQHD – ab 1920px bis 2559px */
+/* 1440p WQHD – ab 1920px bis 2559px */
 @media (min-width: 1920px) and (max-width: 2559px) {
-  #title {
-    font-size: 110px;
-  }
-  .display {
-    font-size: 54px;
-    width: 260px;
-    height: 75px;
-  }
-  .calcShell {
-    transform: translate(-50%, -50%) scale(1.4);
-  }
-
- 
+    #title { font-size: 100px; }
+    .calcShell { transform: translate(-50%, -55%) scale(1.0); }
 }
 
-/* 🧑‍💻 Full HD 1080p – ab 1280px bis 1919px */
+/* Full HD 1080p – ab 1280px bis 1919px */
 @media (min-width: 1280px) and (max-width: 1919px) {
-  #title {
-    font-size: 90px;
-  }
-  .display {
-    font-size: 46px;
-    width: 220px;
-    height: 60px;
-  }
-  .calcShell {
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-
-  
+    #title { font-size: 79px; }
+    .calcShell { transform: translate(-50%, -55%) scale(0.95); }
 }
 
-/* 📱 Mobile Geräte (Tablets & Smartphones) – bis 767px */
+
+/* Optimierung für Tablets (768px bis 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #title {
+        font-size: 90px; /* Reduzierte Schriftgröße für Tablets */
+    }
+
+    .calcShell {
+        transform: translate(-50%, -50%) scale(1.0); /* Leicht verkleinert */
+      
+        margin: -50px auto; /* Weniger Margin */
+    }
+}
+/* Mobile Geräte (Tablets & Smartphones) – bis 767px */
 @media (max-width: 767px) {
-  #title {
-    font-size: 40px;
-  
-  }
-  .display {
-    font-size: 28px;
-    width: 160px;
-    height: 40px;
-  }
-  .calcShell {
-    transform: translate(-50%, -78%) scale(0.7);
-    padding: 12px;
-  }
- 
-
+    #title { font-size: 70px; }
+    .calcShell { 
+        transform: translate(-50%, -60%) scale(0.85);
+       
+    }
 }
-
-
-
