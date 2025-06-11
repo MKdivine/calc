@@ -7,6 +7,7 @@ let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 
 
 let savedResult = ""; // Hier speichern wir das Ergebnis der Berechnung
+savedResult = firstNum
 
 
 // Calculator functions
@@ -65,19 +66,22 @@ operatorButtons.forEach((button) => {
                 case "+":
                     result = addNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
-                    result = savedResult;
+                    result = savedResult
                     break;
                 case "-":
                     result = subtractNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
+                    result = savedResult
                     break;
                 case "*":
                     result = multiplyNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
+                    result = savedResult
                     break;
                 case "/":
                     result = divideNumbers(firstNum, secondNum);
                     resultDisplay.textContent = result;
+                    result = savedResult
                     break;
             }
 

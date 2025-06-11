@@ -233,39 +233,44 @@ body {
 /* 4K Ultra HD – ab 2560px */
 @media (min-width: 2560px) {
     #title { font-size: 100px; }
-    .calcShell { transform: translate(-50%, -50%) scale(1.0); }
+    .calcShell { transform: translate(-50%, -50%) scale(1.0); 
+         margin-top: 50px; /
+    }
 }
 
 /* 1440p WQHD – ab 1920px bis 2559px */
 @media (min-width: 1920px) and (max-width: 2559px) {
     #title { font-size: 100px; }
-    .calcShell { transform: translate(-50%, -55%) scale(1.0); }
+    .calcShell { transform: translate(-50%, -55%) scale(1.0); 
+     margin-top: 50px; /}
 }
 
 /* Full HD 1080p – ab 1280px bis 1919px */
 @media (min-width: 1280px) and (max-width: 1919px) {
     #title { font-size: 79px; }
-    .calcShell { transform: translate(-50%, -55%) scale(0.95); }
+    .calcShell { transform: translate(-50%, -55%) scale(0.95);
+     margin-top: 50px; / }
 }
 
 
 /* Optimierung für Tablets (768px bis 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     #title {
-        font-size: 90px; /* Reduzierte Schriftgröße für Tablets */
+        font-size: 70px; /* Reduzierte Schriftgröße für Tablets */
     }
 
     .calcShell {
-        transform: translate(-50%, -50%) scale(1.0); /* Leicht verkleinert */
+        transform: translate(-50%, -50%) scale(0.6); /* Leicht verkleinert */
       
-        margin: -50px auto; /* Weniger Margin */
+        margin-top: 10px; /* Leichter Abstand nach oben */
     }
 }
 /* Mobile Geräte (Tablets & Smartphones) – bis 767px */
 @media (max-width: 767px) {
     #title { font-size: 70px; }
     .calcShell { 
-        transform: translate(-50%, -60%) scale(0.85);
+        transform: translate(-50%, -60%) scale(0.55);
+        margin-top: 30px
        
     }
 }
