@@ -260,9 +260,9 @@ body {
     }
 
     .calcShell {
-        transform: translate(-50%, -50%) scale(0.6); /* Leicht verkleinert */
+        transform: translate(-50%, -50%) scale(0.86); /* Leicht verkleinert */
       
-        margin-top: 10px; /* Leichter Abstand nach oben */
+        margin-bottom: auto
     }
 }
 /* Mobile Geräte (Tablets & Smartphones) – bis 767px */
