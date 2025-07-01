@@ -2,8 +2,11 @@
 let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
 let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
 let operator = "";       // Hier speichern wir +, -, *, /
+let operator2 = ""; // Hier speichern wir den zweiten Operator, falls nötig
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = ""  // Hier speichern wir das Ergebnis der Berechnung
+let operatorClickCount = 0;
+
 
 
 let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
@@ -46,6 +49,36 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
+        if (button.textContent !== "") {
+            operatorClickCount++;
+        }
+        if (operatorClickCount > 3) {
+            resultDisplay.textContent = "Error: Too many operators";
+            setTimeout(function () {
+                resultDisplay.textContent = "";
+                resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
+            }, 2000); // 
+            userInput = ""; // Eingabe zurücksetzen
+            result = ""; // Ergebnis zurücksetzen
+            operator = ""; // Operator zurücksetzen
+            operator2 = ""; // Zweiten Operator zurücksetzen
+            firstNum = ""; // Erste Zahl zurücksetzen
+            secondNum = ""; // Zweite Zahl zurücksetzen
+            return; // Abbrechen, wenn zu viele Operatoren gedrückt wurden
+        }
+        if (operatorClickCount > 1 && button.textContent !== "=") {
+            operator1 = button.textContent; // Speichern des ersten Operators
+            firstNum = userInput; // Erste Zahl speichern (z. B. 5)
+            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+        }
+        else if (operatorClickCount > 2 && button.textContent !== "=") {
+            operator2 = button.textContent; // Speichern des zweiten Operators
+            tempResult = calculate(firstNum, secondNum, operator1); // Berechnung mit dem ersten Operator
+            resultDisplay.textContent = tempResult; // Ergebnis anzeigen
+            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+        }
+
+
             
         if (button.textContent === "=") {
             secondNum = userInput;
@@ -61,30 +94,54 @@ operatorButtons.forEach((button) => {
             //     return; // Abbrechen, wenn Division durch 0
             // }
 
-            switch (operator) {
-                case "+":
-                    result = addNumbers(firstNum, secondNum);
-                    break;
-                case "-":
-                    result = subtractNumbers(firstNum, secondNum);
-                    break;
-                case "*":
-                    result = multiplyNumbers(firstNum, secondNum);
-                    break;
-                case "/":
-                    result = divideNumbers(firstNum, secondNum);
-                    break;
+            function calculate(firstNum, secondNum, operator) {
+                switch (operator) {
+                    case "+":
+                        return result = addNumbers(firstNum, secondNum);
+                    case "-":
+                        return result = subtractNumbers(firstNum, secondNum);
+                    case "*":
+                        return result = multiplyNumbers(firstNum, secondNum);
+                    case "/":
+                        if (secondNum === "0") {
+                            return "Error :o"; // Division durch 0
+                        }
+                        return divideNumbers(firstNum, secondNum);
+                    default:
+                        return "Error";
+                }
             }
+
+        
+
 
         } else {
             firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
             operator = button.textContent;  // Operator merken (z. B. "+")
             userInput = "";
             resultDisplay.textContent = result;
-            tempResult = result;
+            result = tempResult
 
             // Zurücksetzen für die zweite Zahl
         }
+          function finalResult(tempResult, secondNum, operator) {
+            userInput = secondNum
+            switch (operator) {
+              case "+":
+                return addNumbers(tempResult, secondNum);
+            case "-":
+                return subtractNumbers(tempResult, secondNum);
+              case "*":
+                return multiplyNumbers(tempResult, secondNum);
+              case "/":
+                if (secondNum === "0") {
+                    return "Error :o"; // Division durch 0
+                }
+                return divideNumbers(tempResult, secondNum);
+              default:
+                return "Error";
+          }
+          }
     });
 });
 
