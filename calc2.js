@@ -159,7 +159,8 @@ clearButton.addEventListener("click", () => {
         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
     }, 1000); // 
     result = ""; // Ergebnis zurücksetzen
-    operator1, operator2 = ""; // Operator zurücksetzen
+    operator1 = ""; // Erster Operator zurücksetzen
+    operator2 = ""; // Zweiten Operator zurücksetzen
 });
 
 
