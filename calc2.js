@@ -57,7 +57,7 @@ operatorButtons.forEach((button) => {
             }, 2000); // 
             userInput = ""; // Eingabe zurücksetzen
             result = ""; // Ergebnis zurücksetzen
-            operator = ""; // Operator zurücksetzen
+            operator1 = ""; // Operator zurücksetzen
             operator2 = ""; // Zweiten Operator zurücksetzen
             firstNum = ""; // Erste Zahl zurücksetzen
             secondNum = ""; // Zweite Zahl zurücksetzen
@@ -79,7 +79,10 @@ operatorButtons.forEach((button) => {
 
         if (button.textContent === "=") {
             secondNum = userInput;
-            finalResult(firstNum, secondNum, operator1, operator2); // Berechnung mit dem zweiten Operator
+            let res = finalResult(firstNum, secondNum, operator1, operator2);
+            resultDisplay.textContent = res;
+            userInput = "";
+            // ggf. weitere Rücksetzungen
 
 
             // if (operator === "/" && secondNum === "0") {
@@ -94,7 +97,7 @@ operatorButtons.forEach((button) => {
             // }
         }
         else {
-            operator = button.textContent; // Speichern des Operators (z. B. +, -, *, /)
+            operator1 = button.textContent; // Speichern des Operators (z. B. +, -, *, /)
             firstNum = userInput; // Erste Zahl speichern (z. B. 5)
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
         }
@@ -102,50 +105,51 @@ operatorButtons.forEach((button) => {
     }
     );
 });
-    
+
 
 function finalResult(firstNum, secondNum, operator1, operator2) {
-        
 
-        switch (operator1) {
-            case "+":
-                result = addNumbers(firstNum, secondNum);
-                break;
-            case "-":
-                result = subtractNumbers(firstNum, secondNum);
-                break;
-            case "*":
-                result = multiplyNumbers(firstNum, secondNum);
-                break;
-            case "/":
-                if (secondNum === "0") return "Error :o";
-                result = divideNumbers(firstNum, secondNum);
-                break;
-            default:
-                return "Error";
-        }
-            firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
-            userInput = "";
-            resultDisplay.textContent = result;
-            tempResult = result;
 
-        // Hier kommt der zweite Operator ins Spiel:
-        switch (operator2) {
-            case "+":
-                return addNumbers(tempResult, secondNum);
-            case "-":
-                return subtractNumbers(tempResult, secondNum);
-            case "*":
-                return multiplyNumbers(tempResult, secondNum);
-            case "/":
-                if (secondNum === "0") return "Error :o";
-                return divideNumbers(tempResult, secondNum);
-            default:
-                return "Error";
-        } 
-         
+    switch (operator1) {
+        case "+":
+            result = addNumbers(firstNum, secondNum);
+            break;
+        case "-":
+            result = subtractNumbers(firstNum, secondNum);
+            break;
+        case "*":
+            result = multiplyNumbers(firstNum, secondNum);
+            break;
+        case "/":
+            if (secondNum === "0") return "Error :o";
+            result = divideNumbers(firstNum, secondNum);
+            break;
+        default:
+            return "Error";
     }
-     
+    tempResult = result;
+    resultDisplay.textContent = result;
+    return result; // Ergebnis zurückgebentempResult = result;
+
+}
+
+    // Hier kommt der zweite Operator ins Spiel:
+    // switch (operator2) {
+    //     case "+":
+    //         return addNumbers(tempResult, secondNum);
+    //     case "-":
+    //         return subtractNumbers(tempResult, secondNum);
+    //     case "*":
+    //         return multiplyNumbers(tempResult, secondNum);
+    //     case "/":
+    //         if (secondNum === "0") return "Error :o";
+    //         return divideNumbers(tempResult, secondNum);
+    //     default:
+    //         return "Error";
+    // } 
+
+
+
 
 
 // Calculator Clear Button 
