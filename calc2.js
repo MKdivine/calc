@@ -94,56 +94,43 @@ operatorButtons.forEach((button) => {
             //     return; // Abbrechen, wenn Division durch 0
             // }
 
-            function calculate(firstNum, secondNum, operator) {
-                switch (operator) {
-                    case "+":
-                        return result = addNumbers(firstNum, secondNum);
-                    case "-":
-                        return result = subtractNumbers(firstNum, secondNum);
-                    case "*":
-                        return result = multiplyNumbers(firstNum, secondNum);
-                    case "/":
-                        if (secondNum === "0") {
-                            return "Error :o"; // Division durch 0
-                        }
-                        return divideNumbers(firstNum, secondNum);
-                    default:
-                        return "Error";
-                }
-            }
+function finalResult(firstNum, secondNum, operator1, operator2) {
+    let intermediateResult;
 
-        
+    switch (operator1) {
+        case "+":
+            intermediateResult = addNumbers(firstNum, secondNum);
+            break;
+        case "-":
+            intermediateResult = subtractNumbers(firstNum, secondNum);
+            break;
+        case "*":
+            intermediateResult = multiplyNumbers(firstNum, secondNum);
+            break;
+        case "/":
+            if (secondNum === "0") return "Error :o";
+            intermediateResult = divideNumbers(firstNum, secondNum);
+            break;
+        default:
+            return "Error";
+    }
 
+    // Hier kommt der zweite Operator ins Spiel:
+    switch (operator2) {
+        case "+":
+            return addNumbers(intermediateResult, secondNum);
+        case "-":
+            return subtractNumbers(intermediateResult, secondNum);
+        case "*":
+            return multiplyNumbers(intermediateResult, secondNum);
+        case "/":
+            if (secondNum === "0") return "Error :o";
+            return divideNumbers(intermediateResult, secondNum);
+        default:
+            return "Error";
+    }
+}
 
-        } else {
-            firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
-            operator = button.textContent;  // Operator merken (z. B. "+")
-            userInput = "";
-            resultDisplay.textContent = result;
-            result = tempResult
-
-            // Zurücksetzen für die zweite Zahl
-        }
-          function finalResult(tempResult, secondNum, operator) {
-            userInput = secondNum
-            switch (operator) {
-              case "+":
-                return addNumbers(tempResult, secondNum);
-            case "-":
-                return subtractNumbers(tempResult, secondNum);
-              case "*":
-                return multiplyNumbers(tempResult, secondNum);
-              case "/":
-                if (secondNum === "0") {
-                    return "Error :o"; // Division durch 0
-                }
-                return divideNumbers(tempResult, secondNum);
-              default:
-                return "Error";
-          }
-          }
-    });
-});
 
 // Calculator Clear Button 
 const clearButton = document.getElementById("CLEAR");
