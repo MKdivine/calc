@@ -1,14 +1,11 @@
 
 let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
 let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
-let operator = "";       // Hier speichern wir +, -, *, /
+let operator1 = "";       // Hier speichern wir +, -, *, /
 let operator2 = ""; // Hier speichern wir den zweiten Operator, falls nötig
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = ""  // Hier speichern wir das Ergebnis der Berechnung
 let operatorClickCount = 0;
-
-
-
 let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 
 
@@ -73,15 +70,16 @@ operatorButtons.forEach((button) => {
         }
         else if (operatorClickCount > 2 && button.textContent !== "=") {
             operator2 = button.textContent; // Speichern des zweiten Operators
-            tempResult = calculate(firstNum, secondNum, operator1); // Berechnung mit dem ersten Operator
+            tempResult = finalResult(firstNum, secondNum, operator1); // Berechnung mit dem ersten Operator
             resultDisplay.textContent = tempResult; // Ergebnis anzeigen
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
         }
 
 
-            
+
         if (button.textContent === "=") {
             secondNum = userInput;
+
 
             // if (operator === "/" && secondNum === "0") {
             //     resultDisplay.textContent = "Error :o";
@@ -93,42 +91,53 @@ operatorButtons.forEach((button) => {
             //     operator = ""; // Operator zurücksetzen
             //     return; // Abbrechen, wenn Division durch 0
             // }
+        }
+        else {
+            operator = button.textContent; // Speichern des Operators (z. B. +, -, *, /)
+            firstNum = userInput; // Erste Zahl speichern (z. B. 5)
+            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+        }
+
+    }
+    );
+});
+    
 
 function finalResult(firstNum, secondNum, operator1, operator2) {
-    let intermediateResult;
+        let intermediateResult;
 
-    switch (operator1) {
-        case "+":
-            intermediateResult = addNumbers(firstNum, secondNum);
-            break;
-        case "-":
-            intermediateResult = subtractNumbers(firstNum, secondNum);
-            break;
-        case "*":
-            intermediateResult = multiplyNumbers(firstNum, secondNum);
-            break;
-        case "/":
-            if (secondNum === "0") return "Error :o";
-            intermediateResult = divideNumbers(firstNum, secondNum);
-            break;
-        default:
-            return "Error";
-    }
+        switch (operator1) {
+            case "+":
+                intermediateResult = addNumbers(firstNum, secondNum);
+                break;
+            case "-":
+                intermediateResult = subtractNumbers(firstNum, secondNum);
+                break;
+            case "*":
+                intermediateResult = multiplyNumbers(firstNum, secondNum);
+                break;
+            case "/":
+                if (secondNum === "0") return "Error :o";
+                intermediateResult = divideNumbers(firstNum, secondNum);
+                break;
+            default:
+                return "Error";
+        }
 
-    // Hier kommt der zweite Operator ins Spiel:
-    switch (operator2) {
-        case "+":
-            return addNumbers(intermediateResult, secondNum);
-        case "-":
-            return subtractNumbers(intermediateResult, secondNum);
-        case "*":
-            return multiplyNumbers(intermediateResult, secondNum);
-        case "/":
-            if (secondNum === "0") return "Error :o";
-            return divideNumbers(intermediateResult, secondNum);
-        default:
-            return "Error";
-    }
+        // Hier kommt der zweite Operator ins Spiel:
+        switch (operator2) {
+            case "+":
+                return addNumbers(intermediateResult, secondNum);
+            case "-":
+                return subtractNumbers(intermediateResult, secondNum);
+            case "*":
+                return multiplyNumbers(intermediateResult, secondNum);
+            case "/":
+                if (secondNum === "0") return "Error :o";
+                return divideNumbers(intermediateResult, secondNum);
+            default:
+                return "Error";
+        }
 }
 
 
@@ -143,10 +152,10 @@ clearButton.addEventListener("click", () => {
         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
     }, 1000); // 
     result = ""; // Ergebnis zurücksetzen
-    operator = ""; // Operator zurücksetzen
+    operator1, operator2 = ""; // Operator zurücksetzen
 });
 
-/* SGPT shtop */
+
 
 
 
