@@ -79,6 +79,7 @@ operatorButtons.forEach((button) => {
 
         if (button.textContent === "=") {
             secondNum = userInput;
+            finalResult(firstNum, secondNum, operator1, operator2); // Berechnung mit dem zweiten Operator
 
 
             // if (operator === "/" && secondNum === "0") {
@@ -104,41 +105,47 @@ operatorButtons.forEach((button) => {
     
 
 function finalResult(firstNum, secondNum, operator1, operator2) {
-        let intermediateResult;
+        
 
         switch (operator1) {
             case "+":
-                intermediateResult = addNumbers(firstNum, secondNum);
+                result = addNumbers(firstNum, secondNum);
                 break;
             case "-":
-                intermediateResult = subtractNumbers(firstNum, secondNum);
+                result = subtractNumbers(firstNum, secondNum);
                 break;
             case "*":
-                intermediateResult = multiplyNumbers(firstNum, secondNum);
+                result = multiplyNumbers(firstNum, secondNum);
                 break;
             case "/":
                 if (secondNum === "0") return "Error :o";
-                intermediateResult = divideNumbers(firstNum, secondNum);
+                result = divideNumbers(firstNum, secondNum);
                 break;
             default:
                 return "Error";
         }
+            firstNum = userInput;  // Erste Zahl speichern (z. B. 5)
+            userInput = "";
+            resultDisplay.textContent = result;
+            tempResult = result;
 
         // Hier kommt der zweite Operator ins Spiel:
         switch (operator2) {
             case "+":
-                return addNumbers(intermediateResult, secondNum);
+                return addNumbers(tempResult, secondNum);
             case "-":
-                return subtractNumbers(intermediateResult, secondNum);
+                return subtractNumbers(tempResult, secondNum);
             case "*":
-                return multiplyNumbers(intermediateResult, secondNum);
+                return multiplyNumbers(tempResult, secondNum);
             case "/":
                 if (secondNum === "0") return "Error :o";
-                return divideNumbers(intermediateResult, secondNum);
+                return divideNumbers(tempResult, secondNum);
             default:
                 return "Error";
-        }
-}
+        } 
+         
+    }
+     
 
 
 // Calculator Clear Button 
