@@ -70,11 +70,10 @@ operatorButtons.forEach((button) => {
             firstNum = userInput; // Erste Zahl speichern (z. B. 5)
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
         }
-        else if (operatorClickCount > 2 && button.textContent !== "=") {
+        if (operatorClickCount > 2 && button.textContent !== "=") {
             operator2 = button.textContent; // Speichern des zweiten Operators
-            tempResult = finalResult(firstNum, secondNum, operator1); // Berechnung mit dem ersten Operator
-            resultDisplay.textContent = tempResult; // Ergebnis anzeigen
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+            firstNum = userInput
         }
        
 
@@ -134,10 +133,24 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         default:
             return "Error";
     }
+    console.log("Erster Operator :", operator1);
+    console.log("Erste Zahl :", firstNum);
+    console.log("Zweite Zahl :", secondNum);
+    console.log("Ergebnis der ersten Berechnung :", result);
+    console.log(firstNum, operator1, secondNum, result);
     operator1 = ""; // Erster Operator zurücksetzen
+    operatorClickCount = 1; // Operator-Klick-Zähler zurücksetzen
+    
 
     // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
     if (operator2) {
+       console.log("Zweiter Operator :", operator2);
+       console.log("erste Zahl :", result);
+        console.log("zweite Zahl :", secondNum);
+        console.log("Ergebnis der zweiten Berechnung :", lastResult);
+        // Hier wird die zweite Berechnung durchgeführt
+        // Die zweite Zahl ist die, die der Benutzer eingegeben hat, nachdem er den ersten Operator gedrückt hat
+       console.log(firstNum, secondNum, operator1, operator2);
         switch (operator2) {
             case "+":
                 lastResult = addNumbers(result, secondNum);
@@ -157,7 +170,9 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         }
     }
      
-    
+    operator2 = ""; // Zweiten Operator zurücksetzen
+    operatorClickCount = 0; // Operator-Klick-Zähler zurücksetzen
+    console.log("Ergebnis der zweiten Berechnung :", lastResult);
     return lastResult || result; // Rückgabe des Ergebnisses oder des letzten Ergebnisses
 }
 
