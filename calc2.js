@@ -64,23 +64,32 @@ operatorButtons.forEach((button) => {
         if (button.textContent !== "") {
             operatorClickCount++;
         }
-       
+
         if (operatorClickCount > 1 && button.textContent !== "=") {
             operator1 = button.textContent; // Speichern des ersten Operators
-            firstNum = userInput; // Erste Zahl speichern (z. B. 5)
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+            if (!operator1) {
+                operator1 = value;           // z. B. "+"
+                firstNum = userInput;        // Zahl vor dem Operator speichern
+                userInput = "";              // für nächste Eingabe leeren
+            }
+
+
+
         }
-        if (operatorClickCount > 2 && button.textContent !== "=") {
+        else if (operatorClickCount > 2 && button.textContent !== "=") {
             operator2 = button.textContent; // Speichern des zweiten Operators
+            firstNum = userInput; // Speichern der ersten Zahl
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
-            firstNum = userInput
+
+
+
         }
-       
 
 
 
         if (button.textContent === "=") {
-            secondNum = userInput;
+            secondNum = userInput; // Speichern der zweiten Zahl
             let res = finalResult(firstNum, secondNum, operator1, operator2);
             resultDisplay.textContent = res;
             userInput = "";
@@ -99,9 +108,9 @@ operatorButtons.forEach((button) => {
             // }
         }
         else {
-            operator1 = button.textContent; // Speichern des Operators (z. B. +, -, *, /)
-            firstNum = userInput; // Erste Zahl speichern (z. B. 5)
+
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
+
         }
 
     }
@@ -140,17 +149,18 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
     console.log(firstNum, operator1, secondNum, result);
     operator1 = ""; // Erster Operator zurücksetzen
     operatorClickCount = 1; // Operator-Klick-Zähler zurücksetzen
-    
+
 
     // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
     if (operator2) {
-       console.log("Zweiter Operator :", operator2);
-       console.log("erste Zahl :", result);
+        console.log("Zweiter Operator :", operator2);
+        console.log("erste Zahl :", result);
         console.log("zweite Zahl :", secondNum);
         console.log("Ergebnis der zweiten Berechnung :", lastResult);
+        firstNum = secondNum
         // Hier wird die zweite Berechnung durchgeführt
         // Die zweite Zahl ist die, die der Benutzer eingegeben hat, nachdem er den ersten Operator gedrückt hat
-       console.log(firstNum, secondNum, operator1, operator2);
+        console.log(firstNum, secondNum, operator1, operator2);
         switch (operator2) {
             case "+":
                 lastResult = addNumbers(result, secondNum);
@@ -169,10 +179,10 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
                 return "Error";
         }
     }
-     
+
     operator2 = ""; // Zweiten Operator zurücksetzen
     operatorClickCount = 0; // Operator-Klick-Zähler zurücksetzen
-    console.log("Ergebnis der zweiten Berechnung :", lastResult);
+
     return lastResult || result; // Rückgabe des Ergebnisses oder des letzten Ergebnisses
 }
 
