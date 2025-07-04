@@ -47,6 +47,7 @@ numButtons.forEach((button) => {
         if (userInput.length < 20) { // Maximale Länge der Eingabe auf 20 Zeichen beschränken
             userInput += button.textContent; // Hier wird die Zahl gespeichert, die der Benutzer drückt
             resultDisplay.textContent = userInput
+            console.log("User Input:", userInput);
 
             // Code für die Schriftgröße
             let baseSize = 48;
@@ -67,11 +68,11 @@ operatorButtons.forEach((button) => {
 
         if (operatorClickCount > 1 && button.textContent !== "=") {
             operator1 = button.textContent; // Speichern des ersten Operators
-            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
             if (!operator1) {
-                operator1 = value;           // z. B. "+"
-                firstNum = userInput;        // Zahl vor dem Operator speichern
-                userInput = "";              // für nächste Eingabe leeren
+                operator1 = button.textContent;           // z. B. "+"
+                console.log("Operator 1:", operator1);
+                userInput = firstNum       // Zahl vor dem Operator speichern
+                console.log("Erste Zahl:", firstNum);
             }
 
 
@@ -90,9 +91,11 @@ operatorButtons.forEach((button) => {
 
         if (button.textContent === "=") {
             secondNum = userInput; // Speichern der zweiten Zahl
+            console.log("Erste Zahl:", firstNum);
             let res = finalResult(firstNum, secondNum, operator1, operator2);
             resultDisplay.textContent = res;
             userInput = "";
+
             // ggf. weitere Rücksetzungen
 
 
