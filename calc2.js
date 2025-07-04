@@ -1,5 +1,6 @@
 let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
 let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
+let thirdNum = "";      // Hier speichern wir die dritte Zahl (z. B. 2)
 let operator1 = "";       // Hier speichern wir +, -, *, /
 let operator2 = ""; // Hier speichern wir den zweiten Operator, falls nötig
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
@@ -73,10 +74,10 @@ operatorButtons.forEach((button) => {
             console.log("Erste Zahl gespeichert:", firstNum);
         }
         else if (operatorClickCount === 2 && button.textContent !== "=") {
-            operator2 = button.textContent; 
+            operator2 = button.textContent;
             // Hier userInput ist leer, man möchte secondNum speichern?
             // Wahrscheinlich besser secondNum speichern
-            userInput = secondNum
+            thirdNum = userInput; // Speichern der dritten Zahl
             userInput = "";
             console.log("Zweiter Operator gewählt:", operator2);
             console.log("Zweite Zahl gespeichert:", secondNum);
@@ -87,11 +88,13 @@ operatorButtons.forEach((button) => {
             console.log("Gleichheits-Button gedrückt.");
             console.log("Erste Zahl:", firstNum);
             console.log("Zweite Zahl:", secondNum);
+            console.log("Dritte Zahl:", thirdNum);
             console.log("Erster Operator:", operator1);
+            console.log("Zweiter Operator:", operator2);
             if (operator2) {
                 console.log("Zweiter Operator:", operator2);
             }
-            const calculationResult = finalResult(firstNum, secondNum, operator1, operator2); // Hier wird die finale Berechnung aufgerufen
+            const calculationResult = finalResult(firstNum, secondNum, thirdNum, operator1, operator2);
             console.log("Berechnungsergebnis:", calculationResult);
             userInput = "";
         }
@@ -117,11 +120,11 @@ operatorButtons.forEach((button) => {
 // Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
 console.log("finalResult wird definiert.");
 
-function finalResult(firstNum, secondNum, operator1, operator2) {
+function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
     let result;
     let lastResult;
 
-    console.log("finalResult aufgerufen mit:", firstNum, operator1, secondNum, operator2);
+    console.log("finalResult aufgerufen mit:", firstNum, operator1, secondNum, operator2, thirdNum);
 
     // Erste Berechnung
     switch (operator1) {
@@ -157,28 +160,28 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
     if (operator2) {
         console.log("Weiter mit zweitem Operator:", operator2);
         console.log("Zwischenergebnis:", result);
-        console.log("Zweite Zahl für zweite Berechnung:", secondNum);
-        firstNum = secondNum;  // Achtung: hier eventuell Logik prüfen
+        console.log("Zweite Zahl für zweite Berechnung:", thirdNum);
+
 
         // Hier wird die zweite Berechnung durchgeführt
-        console.log(`Zweite Berechnung mit: ${result} ${operator2} ${secondNum}`);
+        console.log(`Zweite Berechnung mit: ${result} ${operator2} ${thirdNum}`);
         switch (operator2) {
             case "+":
-                lastResult = addNumbers(result, secondNum);
+                lastResult = addNumbers(result, thirdNum);
                 break;
             case "-":
-                lastResult = subtractNumbers(result, secondNum);
+                lastResult = subtractNumbers(result, thirdNum);
                 break;
             case "*":
-                lastResult = multiplyNumbers(result, secondNum);
+                lastResult = multiplyNumbers(result, thirdNum);
                 break;
             case "/":
-                if (secondNum === "0") {
+                if (thirdNum === "0") {
                     resultDisplay.textContent = "Error :o";
                     console.error("Division durch 0 in zweiter Berechnung!");
                     return "Error :o";
                 }
-                lastResult = divideNumbers(result, secondNum);
+                lastResult = divideNumbers(result, thirdNum);
                 break;
             default:
                 console.error("Unbekannter Operator 2:", operator2);
