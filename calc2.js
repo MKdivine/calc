@@ -22,11 +22,26 @@ const resultDisplay = document.getElementById("result")
 resultDisplay.maxLength = 12;
 const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
+const clearButton = document.getElementById("CLEAR");
 
 // -------------------------------- Code for Calculator -------------------------------------- //
 
+// Calculator Clear Button 
 
-// Nutzereingabe
+
+clearButton.addEventListener("click", () => {
+    userInput = "";
+    resultDisplay.textContent = "cleared";
+    setTimeout(function () {
+        document.getElementById("result").textContent = "";
+        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
+    }, 1000); // 
+    result = ""; // Ergebnis zurücksetzen
+    operator1 = ""; // Erster Operator zurücksetzen
+    operator2 = ""; // Zweiten Operator zurücksetzen
+});
+
+// User Input Button Clicks
 numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         if (userInput.length < 20) { // Maximale Länge der Eingabe auf 20 Zeichen beschränken
@@ -107,9 +122,12 @@ operatorButtons.forEach((button) => {
 });
 
 
+// Das ist die finale Berechnung, die das Ergebnis zurückgibt
+// Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
 function finalResult(firstNum, secondNum, operator1, operator2) {
+    let result;
 
-
+    // Erste Berechnung
     switch (operator1) {
         case "+":
             result = addNumbers(firstNum, secondNum);
@@ -127,45 +145,33 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         default:
             return "Error";
     }
-    tempResult = result;
-    resultDisplay.textContent = result;
-    return result; // Ergebnis zurückgebentempResult = result;
 
+    // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
+    if (operator2) {
+        switch (operator2) {
+            case "+":
+                result = addNumbers(result, secondNum);
+                break;
+            case "-":
+                result = subtractNumbers(result, secondNum);
+                break;
+            case "*":
+                result = multiplyNumbers(result, secondNum);
+                break;
+            case "/":
+                if (secondNum === "0") return "Error :o";
+                result = divideNumbers(result, secondNum);
+                break;
+            default:
+                return "Error";
+        }
+    }
+
+    tempResult = result;
+    return result;
 }
 
-    // Hier kommt der zweite Operator ins Spiel:
-    // switch (operator2) {
-    //     case "+":
-    //         return addNumbers(tempResult, secondNum);
-    //     case "-":
-    //         return subtractNumbers(tempResult, secondNum);
-    //     case "*":
-    //         return multiplyNumbers(tempResult, secondNum);
-    //     case "/":
-    //         if (secondNum === "0") return "Error :o";
-    //         return divideNumbers(tempResult, secondNum);
-    //     default:
-    //         return "Error";
-    // } 
 
-
-
-
-
-// Calculator Clear Button 
-const clearButton = document.getElementById("CLEAR");
-
-clearButton.addEventListener("click", () => {
-    userInput = "";
-    resultDisplay.textContent = "cleared";
-    setTimeout(function () {
-        document.getElementById("result").textContent = "";
-        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-    }, 1000); // 
-    result = ""; // Ergebnis zurücksetzen
-    operator1 = ""; // Erster Operator zurücksetzen
-    operator2 = ""; // Zweiten Operator zurücksetzen
-});
 
 
 
