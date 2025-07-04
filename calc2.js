@@ -1,24 +1,23 @@
-
 let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
 let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
 let operator1 = "";       // Hier speichern wir +, -, *, /
 let operator2 = ""; // Hier speichern wir den zweiten Operator, falls nötig
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
-let result = ""  // Hier speichern wir das Ergebnis der Berechnung
+let result = "";  // Hier speichern wir das Ergebnis der Berechnung
 let operatorClickCount = 0;
 let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 
 
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
-const subtractNumbers = (a, b) => Math.round(a - b)
+const subtractNumbers = (a, b) => Math.round(a - b);
 const multiplyNumbers = (a, b) => Math.round(a * b);
 const divideNumbers = (a, b) => Math.round(a / b * 100) / 100;
 // All functions work in console on firefox
 
 
 // Calc logic for results in ui
-const resultDisplay = document.getElementById("result")
+const resultDisplay = document.getElementById("result");
 resultDisplay.maxLength = 12;
 const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -27,8 +26,6 @@ const clearButton = document.getElementById("CLEAR");
 // -------------------------------- Code for Calculator -------------------------------------- //
 
 // Calculator Clear Button 
-
-
 clearButton.addEventListener("click", () => {
     userInput = "";
     resultDisplay.textContent = "cleared";
@@ -56,8 +53,8 @@ numButtons.forEach((button) => {
             resultDisplay.style.fontSize = fontSize + "px";
         }
     });
+});  // <-- Klammer hier geschlossen
 
-});
 
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
@@ -66,66 +63,54 @@ operatorButtons.forEach((button) => {
             operatorClickCount++;
         }
 
-        if (operatorClickCount > 1 && button.textContent !== "=") {
-            operator1 = button.textContent; // Speichern des ersten Operators
-            if (!operator1) {
-                operator1 = button.textContent;           // z. B. "+"
-                console.log("Operator 1:", operator1);
-                userInput = firstNum       // Zahl vor dem Operator speichern
-                console.log("Erste Zahl:", firstNum);
-            }
-
-
-
+        if (operatorClickCount === 1 && button.textContent !== "=") {
+            operator1 = button.textContent;
+            firstNum = userInput;
+            userInput = "";
+            console.log("Operator 1:", operator1);
+            console.log("Erste Zahl:", firstNum);
         }
-        else if (operatorClickCount > 2 && button.textContent !== "=") {
-            operator2 = button.textContent; // Speichern des zweiten Operators
-            firstNum = userInput; // Speichern der ersten Zahl
-            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
-
-
-
+        else if (operatorClickCount === 2 && button.textContent !== "=") {
+            operator2 = button.textContent; 
+            firstNum = userInput; // Hier wird die erste Zahl gespeichert, wenn der zweite Operator gedrückt wird
+            userInput = "";
+            console.log("Operator 2:", operator2);
+            console.log("Zweite Zahl:", secondNum);
         }
-
-
 
         if (button.textContent === "=") {
             secondNum = userInput; // Speichern der zweiten Zahl
             console.log("Erste Zahl:", firstNum);
-            let res = finalResult(firstNum, secondNum, operator1, operator2);
-            resultDisplay.textContent = res;
+            console.log("Zweite Zahl:", secondNum);
+            console.log("Operator 1:", operator1);
+            finalResult(firstNum, secondNum, operator1, operator2); // Hier wird die finale Berechnung aufgerufen
             userInput = "";
-
-            // ggf. weitere Rücksetzungen
-
-
-            // if (operator === "/" && secondNum === "0") {
-            //     resultDisplay.textContent = "Error :o";
-            //     setTimeout(function () {
-            //         resultDisplay.textContent = "";
-            //         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-            //     }, 2000); // 
-            //     result = ""; // Ergebnis zurücksetzen
-            //     operator = ""; // Operator zurücksetzen
-            //     return; // Abbrechen, wenn Division durch 0
-            // }
         }
-        else {
-
-            userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
-
-        }
-
-    }
-    );
+    });
 });
+
+// ggf. weitere Rücksetzungen
+
+
+// if (operator === "/" && secondNum === "0") {
+//     resultDisplay.textContent = "Error :o";
+//     setTimeout(function () {
+//         resultDisplay.textContent = "";
+//         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
+//     }, 2000); // 
+//     result = ""; // Ergebnis zurücksetzen
+//     operator = ""; // Operator zurücksetzen
+//     return; // Abbrechen, wenn Division durch 0
+// }
 
 
 // Das ist die finale Berechnung, die das Ergebnis zurückgibt
 // Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
+console.log("finalResult wird aufgerufen mit:", firstNum, secondNum, operator1, operator2);
+
 function finalResult(firstNum, secondNum, operator1, operator2) {
     let result;
-    let lastResult
+    let lastResult;
 
     // Erste Berechnung
     switch (operator1) {
@@ -145,6 +130,8 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         default:
             return "Error";
     }
+    resultDisplay.textContent = result; // Ergebnis anzeigen
+
     console.log("Erster Operator :", operator1);
     console.log("Erste Zahl :", firstNum);
     console.log("Zweite Zahl :", secondNum);
@@ -160,7 +147,7 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         console.log("erste Zahl :", result);
         console.log("zweite Zahl :", secondNum);
         console.log("Ergebnis der zweiten Berechnung :", lastResult);
-        firstNum = secondNum
+        firstNum = secondNum;
         // Hier wird die zweite Berechnung durchgeführt
         // Die zweite Zahl ist die, die der Benutzer eingegeben hat, nachdem er den ersten Operator gedrückt hat
         console.log(firstNum, secondNum, operator1, operator2);
@@ -186,12 +173,8 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
     operator2 = ""; // Zweiten Operator zurücksetzen
     operatorClickCount = 0; // Operator-Klick-Zähler zurücksetzen
 
-    return lastResult || result; // Rückgabe des Ergebnisses oder des letzten Ergebnisses
+    return lastResult !== undefined ? lastResult : result;
 }
-
-
-
-
 
 
 
