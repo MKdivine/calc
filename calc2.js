@@ -145,6 +145,7 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
         default:
             return "Error";
     }
+    operator1 = ""; // Erster Operator zurücksetzen
 
     // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
     if (operator2) {
@@ -166,8 +167,7 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
                 return "Error";
         }
     }
-
-    tempResult = result;
+     
     return result;
 }
 
