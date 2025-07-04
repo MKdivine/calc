@@ -64,20 +64,7 @@ operatorButtons.forEach((button) => {
         if (button.textContent !== "") {
             operatorClickCount++;
         }
-        if (operatorClickCount > 3) {
-            resultDisplay.textContent = "Error: Too many operators";
-            setTimeout(function () {
-                resultDisplay.textContent = "";
-                resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-            }, 2000); // 
-            userInput = ""; // Eingabe zurücksetzen
-            result = ""; // Ergebnis zurücksetzen
-            operator1 = ""; // Operator zurücksetzen
-            operator2 = ""; // Zweiten Operator zurücksetzen
-            firstNum = ""; // Erste Zahl zurücksetzen
-            secondNum = ""; // Zweite Zahl zurücksetzen
-            return; // Abbrechen, wenn zu viele Operatoren gedrückt wurden
-        }
+       
         if (operatorClickCount > 1 && button.textContent !== "=") {
             operator1 = button.textContent; // Speichern des ersten Operators
             firstNum = userInput; // Erste Zahl speichern (z. B. 5)
@@ -89,6 +76,7 @@ operatorButtons.forEach((button) => {
             resultDisplay.textContent = tempResult; // Ergebnis anzeigen
             userInput = ""; // Eingabe zurücksetzen für die nächste Zahl
         }
+       
 
 
 
@@ -126,6 +114,7 @@ operatorButtons.forEach((button) => {
 // Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
 function finalResult(firstNum, secondNum, operator1, operator2) {
     let result;
+    let lastResult
 
     // Erste Berechnung
     switch (operator1) {
@@ -151,24 +140,25 @@ function finalResult(firstNum, secondNum, operator1, operator2) {
     if (operator2) {
         switch (operator2) {
             case "+":
-                result = addNumbers(result, secondNum);
+                lastResult = addNumbers(result, secondNum);
                 break;
             case "-":
-                result = subtractNumbers(result, secondNum);
+                lastResult = subtractNumbers(result, secondNum);
                 break;
             case "*":
-                result = multiplyNumbers(result, secondNum);
+                lastResult = multiplyNumbers(result, secondNum);
                 break;
             case "/":
                 if (secondNum === "0") return "Error :o";
-                result = divideNumbers(result, secondNum);
+                lastResult = divideNumbers(result, secondNum);
                 break;
             default:
                 return "Error";
         }
     }
      
-    return result;
+    
+    return lastResult || result; // Rückgabe des Ergebnisses oder des letzten Ergebnisses
 }
 
 
