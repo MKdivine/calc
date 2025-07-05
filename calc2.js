@@ -38,6 +38,9 @@ clearButton.addEventListener("click", () => {
     operator1 = ""; // Erster Operator zurücksetzen
     operator2 = ""; // Zweiten Operator zurücksetzen
     operatorClickCount = 0;
+    firstNum = ""; // Erste Zahl zurücksetzen
+    secondNum = ""; // Zweite Zahl zurücksetzen
+    thirdNum = ""; // Dritte Zahl zurücksetzen
     console.log("Rechner zurückgesetzt.");
 });
 
@@ -91,7 +94,7 @@ operatorButtons.forEach((button) => {
 
                 secondNum = userInput; // Speichern der zweiten Zahl
             }
-           if (operatorClickCount === 2) {
+            if (operatorClickCount === 2) {
                 secondNum = ""
                 thirdNum = userInput
             }
@@ -174,7 +177,9 @@ function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
 
     operator1 = ""; // Erster Operator zurücksetzen
     operatorClickCount = 1; // Operator-Klick-Zähler zurücksetzen
-
+    userInput = ""; // Benutzer-Eingabe zurücksetzen
+    firstNum = ""
+    secondNum = ""; // Zweite Zahl zurücksetzen
 
     // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
     if (operator2) {
