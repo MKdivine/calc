@@ -62,7 +62,7 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        if (button.textContent !== "") {
+        if (button.textContent === "+" || button.textContent === "-" || button.textContent === "*" || button.textContent === "/") {
             operatorClickCount++;
         }
 
@@ -73,18 +73,28 @@ operatorButtons.forEach((button) => {
             console.log("Erster Operator gewählt:", operator1);
             console.log("Erste Zahl gespeichert:", firstNum);
         }
-        else if (operatorClickCount === 2 && button.textContent !== "=") {
+        if (operatorClickCount === 2 && button.textContent !== "=") {
             operator2 = button.textContent;
             // Hier userInput ist leer, man möchte secondNum speichern?
             // Wahrscheinlich besser secondNum speichern
             thirdNum = userInput; // Speichern der dritten Zahl
             userInput = "";
             console.log("Zweiter Operator gewählt:", operator2);
-            console.log("Zweite Zahl gespeichert:", secondNum);
+            console.log("Dritte Zahl gespeichert:", thirdNum);
         }
 
         if (button.textContent === "=") {
-            secondNum = userInput; // Speichern der zweiten Zahl
+
+
+            if (operator1) {
+
+
+                secondNum = userInput; // Speichern der zweiten Zahl
+            }
+           if (operatorClickCount === 2) {
+                secondNum = ""
+                thirdNum = userInput
+            }
             console.log("Gleichheits-Button gedrückt.");
             console.log("Erste Zahl:", firstNum);
             console.log("Zweite Zahl:", secondNum);
@@ -98,6 +108,16 @@ operatorButtons.forEach((button) => {
             console.log("Berechnungsergebnis:", calculationResult);
             userInput = "";
         }
+        console.log("Aktueller Speicher:", {
+            firstNum,
+            secondNum,
+            thirdNum,
+            operator1,
+            operator2,
+            userInput,
+            operatorClickCount
+        });
+
     });
 });
 
@@ -187,11 +207,11 @@ function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
                 console.error("Unbekannter Operator 2:", operator2);
                 return "Error";
         }
-        console.log(`Ergebnis der zweiten Berechnung: ${result} ${operator2} ${secondNum} = ${lastResult}`);
+        console.log(`Ergebnis der zweiten Berechnung: ${result} ${operator2} ${thirdNum}${lastResult}`);
+        resultDisplay.textContent = result; // Ergebnis anzeigen
     }
 
     operator2 = ""; // Zweiten Operator zurücksetzen
-    operatorClickCount = 0; // Operator-Klick-Zähler zurücksetzen
 
     return lastResult !== undefined ? lastResult : result;
 }
