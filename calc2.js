@@ -23,19 +23,12 @@ const clearButton = document.getElementById("CLEAR");
 
 // Calculator Clear Button 
 clearButton.addEventListener("click", () => {
-    inputArray.clear(); // Eingabe-Array leeren
+    inputArray.length = 0; // Eingabe-Array zurücksetzen
     resultDisplay.textContent = "cleared";
     setTimeout(function () {
         document.getElementById("result").textContent = "";
         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
     }, 1000); // 
-    result = ""; // Ergebnis zurücksetzen
-    operator1 = ""; // Erster Operator zurücksetzen
-    operator2 = ""; // Zweiten Operator zurücksetzen
-    operatorClickCount = 0;
-    firstNum = ""; // Erste Zahl zurücksetzen
-    secondNum = ""; // Zweite Zahl zurücksetzen
-    thirdNum = ""; // Dritte Zahl zurücksetzen
     console.log("Rechner zurückgesetzt.");
 });
 
