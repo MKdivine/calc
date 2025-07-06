@@ -1,13 +1,8 @@
-let firstNum = "";      // Hier speichern wir die erste Zahl (z. B. 5)
-let secondNum = "";     // Hier speichern wir die zweite Zahl (z. B. 3)
-let thirdNum = "";      // Hier speichern wir die dritte Zahl (z. B. 2)
-let operator1 = "";       // Hier speichern wir +, -, *, /
-let operator2 = ""; // Hier speichern wir den zweiten Operator, falls nötig
 let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = "";  // Hier speichern wir das Ergebnis der Berechnung
 let operatorClickCount = 0;
 let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
-
+let inputArray = []; // Hier speichern wir die Zahlen, die der Benutzer drückt
 
 // Calculator functions
 const addNumbers = (a, b) => Number(a) + Number(b);
@@ -50,8 +45,10 @@ numButtons.forEach((button) => {
         if (userInput.length < 20) { // Maximale Länge der Eingabe auf 20 Zeichen beschränken
             userInput += button.textContent; // Hier wird die Zahl gespeichert, die der Benutzer drückt
             resultDisplay.textContent = userInput;
-            console.log("User Input:", userInput);
-
+            inputArray.push(button.textContent);
+            console.log(inputArray) // Hier wird die Zahl in das Array gespeichert
+            console.log("Aktuelle Benutzereingabe:", userInput);
+            
             // Code für die Schriftgröße
             let baseSize = 48;
             let shrink = Math.max(0, userInput.length - 9) * 2;
@@ -59,7 +56,7 @@ numButtons.forEach((button) => {
             resultDisplay.style.fontSize = fontSize + "px";
         }
     });
-});  // <-- Klammer hier geschlossen
+});  
 
 
 // Calculator Operator Button and math functions
@@ -144,79 +141,11 @@ operatorButtons.forEach((button) => {
 console.log("finalResult wird definiert.");
 
 function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
-    let result;
-    let lastResult;
 
-    console.log("finalResult aufgerufen mit:", firstNum, operator1, secondNum, operator2, thirdNum);
-
-    // Erste Berechnung
-    switch (operator1) {
-        case "+":
-            result = addNumbers(firstNum, secondNum);
-            break;
-        case "-":
-            result = subtractNumbers(firstNum, secondNum);
-            break;
-        case "*":
-            result = multiplyNumbers(firstNum, secondNum);
-            break;
-        case "/":
-            if (secondNum === "0") {
-                resultDisplay.textContent = "Error :o";
-                console.error("Division durch 0!");
-                return "Error :o";
-            }
-            result = divideNumbers(firstNum, secondNum);
-            break;
-        default:
-            console.error("Unbekannter Operator:", operator1);
-            return "Error";
-    }
-    resultDisplay.textContent = result; // Ergebnis anzeigen
-    console.log(`Ergebnis der ersten Berechnung: ${firstNum} ${operator1} ${secondNum} = ${result}`);
-
-    operator1 = ""; // Erster Operator zurücksetzen
-    operatorClickCount = 1; // Operator-Klick-Zähler zurücksetzen
-    userInput = ""; // Benutzer-Eingabe zurücksetzen
-    firstNum = ""
-    secondNum = ""; // Zweite Zahl zurücksetzen
-
-    // Falls ein zweiter Operator vorhanden ist, weitere Berechnung
-    if (operator2) {
-        console.log("Weiter mit zweitem Operator:", operator2);
-        console.log("Zwischenergebnis:", result);
-        console.log("Zweite Zahl für zweite Berechnung:", thirdNum);
-
-
-        // Hier wird die zweite Berechnung durchgeführt
-        console.log(`Zweite Berechnung mit: ${result} ${operator2} ${thirdNum}`);
-        switch (operator2) {
-            case "+":
-                lastResult = addNumbers(result, thirdNum);
-                break;
-            case "-":
-                lastResult = subtractNumbers(result, thirdNum);
-                break;
-            case "*":
-                lastResult = multiplyNumbers(result, thirdNum);
-                break;
-            case "/":
-                if (thirdNum === "0") {
-                    resultDisplay.textContent = "Error :o";
-                    console.error("Division durch 0 in zweiter Berechnung!");
-                    return "Error :o";
-                }
-                lastResult = divideNumbers(result, thirdNum);
-                break;
-            default:
-                console.error("Unbekannter Operator 2:", operator2);
-                return "Error";
-        }
-        console.log(`Ergebnis der zweiten Berechnung: ${result} ${operator2} ${thirdNum}${lastResult}`);
         resultDisplay.textContent = result; // Ergebnis anzeigen
     }
 
     operator2 = ""; // Zweiten Operator zurücksetzen
 
     return lastResult !== undefined ? lastResult : result;
-}
+
