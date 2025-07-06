@@ -23,7 +23,7 @@ const clearButton = document.getElementById("CLEAR");
 
 // Calculator Clear Button 
 clearButton.addEventListener("click", () => {
-    userInput = "";
+    inputArray.clear(); // Eingabe-Array leeren
     resultDisplay.textContent = "cleared";
     setTimeout(function () {
         document.getElementById("result").textContent = "";
@@ -45,6 +45,7 @@ numButtons.forEach((button) => {
         if (userInput.length < 20) { // Maximale Länge der Eingabe auf 20 Zeichen beschränken
             userInput += button.textContent; // Hier wird die Zahl gespeichert, die der Benutzer drückt
             resultDisplay.textContent = userInput;
+
             inputArray.push(button.textContent);
             console.log(inputArray) // Hier wird die Zahl in das Array gespeichert
             console.log("Aktuelle Benutzereingabe:", userInput);
@@ -62,8 +63,11 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
+      userInput += button.textContent; // Hier wird der Operator gespeichert, den der Benutzer drückt
+      resultDisplay.textContent = userInput;
       inputArray.push(button.textContent);
-      console.log(inputArray); // Hier wird der Operator in das Array gespeichert
+      console.log(inputArray);
+     }) // Hier wird der Operator in das Array gespeichert
 });
 
 // ggf. weitere Rücksetzungen
