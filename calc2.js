@@ -62,63 +62,8 @@ numButtons.forEach((button) => {
 // Calculator Operator Button and math functions
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        if (button.textContent === "+" || button.textContent === "-" || button.textContent === "*" || button.textContent === "/") {
-            operatorClickCount++;
-        }
-
-        if (operatorClickCount === 1 && button.textContent !== "=") {
-            operator1 = button.textContent;
-            firstNum = userInput;
-            userInput = "";
-            console.log("Erster Operator gewählt:", operator1);
-            console.log("Erste Zahl gespeichert:", firstNum);
-        }
-        if (operatorClickCount === 2 && button.textContent !== "=") {
-            operator2 = button.textContent;
-            // Hier userInput ist leer, man möchte secondNum speichern?
-            // Wahrscheinlich besser secondNum speichern
-            thirdNum = userInput; // Speichern der dritten Zahl
-            userInput = "";
-            console.log("Zweiter Operator gewählt:", operator2);
-            console.log("Dritte Zahl gespeichert:", thirdNum);
-        }
-
-        if (button.textContent === "=") {
-
-
-            if (operator1) {
-
-
-                secondNum = userInput; // Speichern der zweiten Zahl
-            }
-            if (operatorClickCount === 2) {
-                secondNum = ""
-                thirdNum = userInput
-            }
-            console.log("Gleichheits-Button gedrückt.");
-            console.log("Erste Zahl:", firstNum);
-            console.log("Zweite Zahl:", secondNum);
-            console.log("Dritte Zahl:", thirdNum);
-            console.log("Erster Operator:", operator1);
-            console.log("Zweiter Operator:", operator2);
-            if (operator2) {
-                console.log("Zweiter Operator:", operator2);
-            }
-            const calculationResult = finalResult(firstNum, secondNum, thirdNum, operator1, operator2);
-            console.log("Berechnungsergebnis:", calculationResult);
-            userInput = "";
-        }
-        console.log("Aktueller Speicher:", {
-            firstNum,
-            secondNum,
-            thirdNum,
-            operator1,
-            operator2,
-            userInput,
-            operatorClickCount
-        });
-
-    });
+      inputArray.push(button.textContent);
+      console.log(inputArray); // Hier wird der Operator in das Array gespeichert
 });
 
 // ggf. weitere Rücksetzungen
@@ -138,14 +83,14 @@ operatorButtons.forEach((button) => {
 
 // Das ist die finale Berechnung, die das Ergebnis zurückgibt
 // Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
-console.log("finalResult wird definiert.");
+// console.log("finalResult wird definiert.");
 
-function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
+// function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
 
-        resultDisplay.textContent = result; // Ergebnis anzeigen
-    }
+//         resultDisplay.textContent = result; // Ergebnis anzeigen
+//     }
 
-    operator2 = ""; // Zweiten Operator zurücksetzen
+//     operator2 = ""; // Zweiten Operator zurücksetzen
 
-    return lastResult !== undefined ? lastResult : result;
+//     return lastResult !== undefined ? lastResult : result;
 
