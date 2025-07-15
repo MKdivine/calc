@@ -86,15 +86,15 @@ function calcArray(inputArray) {
             result = addNumbers(firstNum, secondNum);
             resultDisplay.textContent = result;
             console.log("Addition:", firstNum, "+", secondNum, "=", result);
-            groupedInput.length = 0;
-            groupedInput.push(result);
-            inputArray.length = 0;
+
+            inputArray.length = 0; // Zurücksetzen für nächste Eingabe
+            inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
+            userInput = result.toString(); // Damit Display den aktuellen Wert kennt
             result = "";
-            userInput = "";
-            firstNum = "";
-            secondNum = "";
+            
             console.log("groupedInput nach Addition:", groupedInput);
         }
+
     }
 }
 
@@ -102,11 +102,18 @@ function calcArray(inputArray) {
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
         console.log("Operator gedrückt:", button.textContent);
-        userInput += button.textContent;
+
+        let operator = button.textContent;
+        userInput += operator//
+
+       
         resultDisplay.textContent = userInput;
         inputArray.push(button.textContent);
+
         console.log("Aktuelles inputArray nach Operator:", inputArray);
         calcArray(inputArray);
+        console.log(userInput);
+
     });
 });
 
