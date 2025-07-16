@@ -43,10 +43,13 @@ numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         console.log("Nummer gedrückt:", button.textContent);
         if (userInput.length < 20) {
+
             userInput += button.textContent;
             resultDisplay.textContent = userInput;
             inputArray.push(button.textContent);
+
             console.log("Aktuelles inputArray nach Zahl:", inputArray);
+
             let baseSize = 48;
             let shrink = Math.max(0, userInput.length - 9) * 2;
             let fontSize = Math.max(32, baseSize - shrink);
@@ -58,6 +61,7 @@ numButtons.forEach((button) => {
 
 function calcArray(inputArray) {
     console.log("calcArray aufgerufen mit:", inputArray);
+    
     const groupedInput = [];
     let userInput = "";
 
@@ -101,21 +105,24 @@ function calcArray(inputArray) {
 // Operator Button Clicks
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
-        console.log("Operator gedrückt:", button.textContent);
+        const operator = button.textContent;
+        console.log("Operator gedrückt:", operator);
 
-        let operator = button.textContent;
-        userInput += operator//
+        // Nur den letzten Wert aus inputArray + Operator anzeigen
+        if (inputArray.length === 1 && !isNaN(inputArray[0])) {
+            userInput = inputArray[0] + operator;
+        } else {
+            userInput += operator;
+        }
 
-       
         resultDisplay.textContent = userInput;
-        inputArray.push(button.textContent);
-
+        inputArray.push(operator);
         console.log("Aktuelles inputArray nach Operator:", inputArray);
-        calcArray(inputArray);
-        console.log(userInput);
 
+        calcArray(inputArray);
     });
 });
+
 
 // ...existing code...
 
