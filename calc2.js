@@ -23,7 +23,6 @@ const clearButton = document.getElementById("CLEAR");
 
 
 // Calculator Clear Button 
-// ...existing code...
 
 clearButton.addEventListener("click", () => {
     console.log("Clear gedrückt");
@@ -61,7 +60,7 @@ numButtons.forEach((button) => {
 
 function calcArray(inputArray) {
     console.log("calcArray aufgerufen mit:", inputArray);
-    
+
     const groupedInput = [];
     let userInput = "";
 
@@ -84,23 +83,41 @@ function calcArray(inputArray) {
     console.log("Final groupedInput:", groupedInput);
 
     if (groupedInput.length === 3) {
-        if (groupedInput.includes("+")) {
-            let firstNum = groupedInput[0];
-            let secondNum = groupedInput[2];
-            result = addNumbers(firstNum, secondNum);
-            resultDisplay.textContent = result;
-            console.log("Addition:", firstNum, "+", secondNum, "=", result);
-
-            inputArray.length = 0; // Zurücksetzen für nächste Eingabe
-            inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
-            userInput = result.toString(); // Damit Display den aktuellen Wert kennt
-            result = "";
-            
-            console.log("groupedInput nach Addition:", groupedInput);
+        let firstNum = groupedInput[0];
+        let secondNum = groupedInput[2];
+        switch (groupedInput[1]) {
+            case "+":
+                result = addNumbers(firstNum, secondNum);
+                console.log("Addition:", firstNum, "+", secondNum, "=", result);
+                break;
+            case "-":
+                result = subtractNumbers(firstNum, secondNum);
+                console.log("Subtraktion:", firstNum, "-", secondNum, "=", result);
+                break;
+            case "*":
+                result = multiplyNumbers(firstNum, secondNum);
+                console.log("Multiplikation:", firstNum, "*", secondNum, "=", result);
+                break;
+            case "/":
+                result = divideNumbers(firstNum, secondNum);
+                console.log("Division:", firstNum, "/", secondNum, "=", result);
+                break;
+            default:
+                console.log("Unbekannter Operator:", groupedInput[1]);
+                return; // Abbrechen, wenn kein gültiger Operator
         }
 
+        resultDisplay.textContent = result;
+        inputArray.length = 0; // Zurücksetzen für nächste Eingabe
+        inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
+        userInput = result.toString(); // Damit Display den aktuellen Wert kennt
+        result = "";
+
+        console.log("groupedInput nach Berechnung:", groupedInput);
     }
 }
+
+
 
 // Operator Button Clicks
 operatorButtons.forEach((button) => {
