@@ -2,8 +2,9 @@ let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
 let result = "";  // Hier speichern wir das Ergebnis der Berechnung
 let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
 let inputArray = []; // Hier speichern wir die Operatoren und Zahlen für die Berechnung
-// Calculator functions
-let groupedInput = []; // Hier speichern wir die gruppierten Eingaben
+let groupedInput = [];
+
+// Math operations
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => Math.round(a - b);
 const multiplyNumbers = (a, b) => Math.round(a * b);
@@ -19,8 +20,6 @@ const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.getElementById("CLEAR");
 
 // -------------------------------- Code for Calculator ---------------------------------- //
-
-
 
 // Calculator Clear Button 
 
