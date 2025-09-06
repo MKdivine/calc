@@ -151,34 +151,3 @@ operatorButtons.forEach((button) => {
 });
 
 
-// ...existing code...
-
-
-// ggf. weitere Rücksetzungen
-
-
-// if (operator === "/" && secondNum === "0") {
-//     resultDisplay.textContent = "Error :o";
-//     setTimeout(function () {
-//         resultDisplay.textContent = "";
-//         resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-//     }, 2000); //
-//     result = ""; // Ergebnis zurücksetzen
-//     operator = ""; // Operator zurücksetzen
-//     return; // Abbrechen, wenn Division durch 0
-// }
-
-
-// Das ist die finale Berechnung, die das Ergebnis zurückgibt
-// Hier wird die Berechnung durchgeführt, wenn der Benutzer auf den Gleichheits-Button klickt
-// console.log("finalResult wird definiert.");
-
-// function finalResult(firstNum, secondNum, thirdNum, operator1, operator2) {
-
-//         resultDisplay.textContent = result; // Ergebnis anzeigen
-//     }
-
-//     operator2 = ""; // Zweiten Operator zurücksetzen
-
-//     return lastResult !== undefined ? lastResult : result;
-
