@@ -57,6 +57,15 @@ numButtons.forEach((button) => {
     });
 });
 
+// Sum Button Click
+sumButton = document.querySelector(".sumOperatorButton");
+
+sumButton.addEventListener("click", function () {
+    console.log("Gleichheits-Button gedrückt");
+    calcArray(inputArray);
+    
+
+
 function calcArray(inputArray) {
     console.log("calcArray aufgerufen mit:", inputArray);
 
@@ -81,9 +90,11 @@ function calcArray(inputArray) {
     }
     console.log("Final groupedInput:", groupedInput);
 
+  
     if (groupedInput.length === 3) {
         let firstNum = groupedInput[0];
         let secondNum = groupedInput[2];
+        
         switch (groupedInput[1]) {
             case "+":
                 result = addNumbers(firstNum, secondNum);
@@ -115,7 +126,7 @@ function calcArray(inputArray) {
         console.log("groupedInput nach Berechnung:", groupedInput);
     }
 }
-
+});
 
 
 // Operator Button Clicks
