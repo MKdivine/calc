@@ -21,20 +21,7 @@ const clearButton = document.getElementById("CLEAR");
 
 // -------------------------------- Code for Calculator ---------------------------------- //
 
-// Calculator Clear Button 
 
-clearButton.addEventListener("click", () => {
-    console.log("Clear gedrückt");
-    inputArray.length = 0; // Eingabe-Array zurücksetzen
-    resultDisplay.textContent = "cleared";
-    userInput = ""; // Benutzer-Eingabe zurücksetzen
-    result = ""; // Ergebnis zurücksetzen
-    setTimeout(function () {
-        document.getElementById("result").textContent = "";
-        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-    }, 1000);
-    console.log("Rechner zurückgesetzt. inputArray:", inputArray, "userInput:", userInput, "result:", result);
-});
 
 // User Input Button Clicks
 numButtons.forEach((button) => {
@@ -63,69 +50,69 @@ sumButton = document.querySelector(".sumOperatorButton");
 sumButton.addEventListener("click", function () {
     console.log("Gleichheits-Button gedrückt");
     calcArray(inputArray);
-    
 
 
-function calcArray(inputArray) {
-    console.log("calcArray aufgerufen mit:", inputArray);
 
-    const groupedInput = [];
-    let userInput = "";
+    function calcArray(inputArray) {
+        console.log("calcArray aufgerufen mit:", inputArray);
 
-    inputArray.forEach((item) => {
-        if (!isNaN(item)) {
-            userInput += item;
-            console.log("userInput (Zahl wird gebaut):", userInput);
-        } else {
-            if (userInput !== "") {
-                groupedInput.push(userInput);
-                userInput = "";
+        const groupedInput = [];
+        let userInput = "";
+
+        inputArray.forEach((item) => {
+            if (!isNaN(item)) {
+                userInput += item;
+                console.log("userInput (Zahl wird gebaut):", userInput);
+            } else {
+                if (userInput !== "") {
+                    groupedInput.push(userInput);
+                    userInput = "";
+                }
+                groupedInput.push(item);
+                console.log("Operator erkannt und gepusht:", item);
             }
-            groupedInput.push(item);
-            console.log("Operator erkannt und gepusht:", item);
+        });
+        if (userInput != "") {
+            groupedInput.push(userInput);
         }
-    });
-    if (userInput != "") {
-        groupedInput.push(userInput);
-    }
-    console.log("Final groupedInput:", groupedInput);
+        console.log("Final groupedInput:", groupedInput);
 
-  
-    if (groupedInput.length === 3) {
-        let firstNum = groupedInput[0];
-        let secondNum = groupedInput[2];
-        
-        switch (groupedInput[1]) {
-            case "+":
-                result = addNumbers(firstNum, secondNum);
-                console.log("Addition:", firstNum, "+", secondNum, "=", result);
-                break;
-            case "-":
-                result = subtractNumbers(firstNum, secondNum);
-                console.log("Subtraktion:", firstNum, "-", secondNum, "=", result);
-                break;
-            case "*":
-                result = multiplyNumbers(firstNum, secondNum);
-                console.log("Multiplikation:", firstNum, "*", secondNum, "=", result);
-                break;
-            case "/":
-                result = divideNumbers(firstNum, secondNum);
-                console.log("Division:", firstNum, "/", secondNum, "=", result);
-                break;
-            default:
-                console.log("Unbekannter Operator:", groupedInput[1]);
-                return; // Abbrechen, wenn kein gültiger Operator
+
+        if (groupedInput.length === 3) {
+            let firstNum = groupedInput[0];
+            let secondNum = groupedInput[2];
+
+            switch (groupedInput[1]) {
+                case "+":
+                    result = addNumbers(firstNum, secondNum);
+                    console.log("Addition:", firstNum, "+", secondNum, "=", result);
+                    break;
+                case "-":
+                    result = subtractNumbers(firstNum, secondNum);
+                    console.log("Subtraktion:", firstNum, "-", secondNum, "=", result);
+                    break;
+                case "*":
+                    result = multiplyNumbers(firstNum, secondNum);
+                    console.log("Multiplikation:", firstNum, "*", secondNum, "=", result);
+                    break;
+                case "/":
+                    result = divideNumbers(firstNum, secondNum);
+                    console.log("Division:", firstNum, "/", secondNum, "=", result);
+                    break;
+                default:
+                    console.log("Unbekannter Operator:", groupedInput[1]);
+                    return; // Abbrechen, wenn kein gültiger Operator
+            }
+
+            resultDisplay.textContent = result;
+            inputArray.length = 0; // Zurücksetzen für nächste Eingabe
+            inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
+            userInput = result.toString(); // Damit Display den aktuellen Wert kennt
+            result = "";
+            secondNum = result;
+            console.log("groupedInput nach Berechnung:", groupedInput);
         }
-
-        resultDisplay.textContent = result;
-        inputArray.length = 0; // Zurücksetzen für nächste Eingabe
-        inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
-        userInput = result.toString(); // Damit Display den aktuellen Wert kennt
-        result = "";
-
-        console.log("groupedInput nach Berechnung:", groupedInput);
     }
-}
 });
 
 
@@ -151,3 +138,17 @@ operatorButtons.forEach((button) => {
 });
 
 
+// Calculator Clear Button 
+
+clearButton.addEventListener("click", () => {
+    console.log("Clear gedrückt");
+    inputArray.length = 0; // Eingabe-Array zurücksetzen
+    resultDisplay.textContent = "cleared";
+    userInput = ""; // Benutzer-Eingabe zurücksetzen
+    result = ""; // Ergebnis zurücksetzen
+    setTimeout(function () {
+        document.getElementById("result").textContent = "";
+        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
+    }, 1000);
+    console.log("Rechner zurückgesetzt. inputArray:", inputArray, "userInput:", userInput, "result:", result);
+});
