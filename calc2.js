@@ -1,154 +1,152 @@
-let userInput = "";  // Hier sammeln wir die Ziffern, die der Benutzer drückt
-let result = "";  // Hier speichern wir das Ergebnis der Berechnung
-let tempResult = ""; // Hier speichern wir das Ergebnis der Berechnung
-let inputArray = []; // Hier speichern wir die Operatoren und Zahlen für die Berechnung
-let groupedInput = [];
+// Aufgeräumte Version von calc2.js
+
+let userInput = "";      // aktuell eingetippte Ziffern/Zeichen (als String)
+let result = "";         // aktuelles Rechenergebnis (als String/Number)
+let tempResult = "";     // optional, für Zwischenresultate
+let inputArray = [];     // gesammelte Tasten (Ziffern und Operatoren)
 
 // Math operations
 const addNumbers = (a, b) => Number(a) + Number(b);
 const subtractNumbers = (a, b) => Math.round(a - b);
 const multiplyNumbers = (a, b) => Math.round(a * b);
 const divideNumbers = (a, b) => Math.round(a / b * 100) / 100;
-// All functions work in console on firefox
 
-
-// Calc logic for results in ui
+// DOM-Elemente (defensiv)
 const resultDisplay = document.getElementById("result");
-resultDisplay.maxLength = 12;
+if (!resultDisplay) console.warn("Element '#result' nicht gefunden.");
+
 const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.getElementById("CLEAR");
-
+const sumButton = document.querySelector(".SUM");
 // -------------------------------- Code for Calculator ---------------------------------- //
 
-
-
-// User Input Button Clicks
+// Nummern-Buttons
 numButtons.forEach((button) => {
     button.addEventListener("click", function () {
         console.log("Nummer gedrückt:", button.textContent);
-        if (userInput.length < 20) {
+        if (userInput.length >= 20) return;
 
-            userInput += button.textContent;
-            resultDisplay.textContent = userInput;
-            inputArray.push(button.textContent);
+        userInput += button.textContent;
+        if (resultDisplay) resultDisplay.textContent = userInput;
 
-            console.log("Aktuelles inputArray nach Zahl:", inputArray);
+        inputArray.push(button.textContent);
+        console.log("Aktuelles inputArray nach Zahl:", inputArray);
 
-            let baseSize = 48;
-            let shrink = Math.max(0, userInput.length - 9) * 2;
-            let fontSize = Math.max(32, baseSize - shrink);
-            resultDisplay.style.fontSize = fontSize + "px";
-            calcArray(inputArray);
-        }
+        // Dynamisches Font-Scaling
+        let baseSize = 48;
+        let shrink = Math.max(0, userInput.length - 9) * 2;
+        let fontSize = Math.max(32, baseSize - shrink);
+        if (resultDisplay) resultDisplay.style.fontSize = fontSize + "px";
+
+        
     });
 });
-
-// Sum Button Click
-// sumButton = document.querySelector(".sumOperatorButton");
-
-// sumButton.addEventListener("click", function () {
-//     console.log("Gleichheits-Button gedrückt");
-//     calcArray(inputArray);
-
+sumButton.addEventListener('click', () => {
+  // Dieser Code läuft nur, wenn der = Button geklickt wurde
+  console.log("= gedrückt");
+  // Hier deine Berechnung
+  operate(inputArray);
+});
 
 
-    function calcArray(inputArray) {
-        console.log("calcArray aufgerufen mit:", inputArray);
+// Berechnungsfunktion (arbeitet mit einer lokalen groupedInput-Repräsentation)
+function operate(inputArray) {
+    console.log("operate aufgerufen mit:", inputArray);
 
-        const groupedInput = [];
-        let userInput = "";
+    const groupedInput = [];
+    let buildingNumber = "";
 
-        inputArray.forEach((item) => {
-            if (!isNaN(item)) {
-                userInput += item;
-                console.log("userInput (Zahl wird gebaut):", userInput);
-            } else {
-                if (userInput !== "") {
-                    groupedInput.push(userInput);
-                    userInput = "";
-                }
-                groupedInput.push(item);
-                console.log("Operator erkannt und gepusht:", item);
+    inputArray.forEach((item) => {
+        if (!isNaN(item)) {
+            buildingNumber += item;
+            console.log("userInput (Zahl wird gebaut):", buildingNumber);
+        } else {
+            if (buildingNumber !== "") {
+                groupedInput.push(buildingNumber);
+                buildingNumber = "";
             }
-        });
-        if (userInput != "") {
-            groupedInput.push(userInput);
+            groupedInput.push(item);
+            console.log("Operator erkannt und gepusht:", item);
         }
-        console.log("Final groupedInput:", groupedInput);
+    });
 
+    if (buildingNumber !== "") groupedInput.push(buildingNumber);
+    console.log("Final groupedInput:", groupedInput);
 
-        if (groupedInput.length === 3) {
-            let firstNum = groupedInput[0];
-            let secondNum = groupedInput[2];
-
-            switch (groupedInput[1]) {
-                case "+":
-                    result = addNumbers(firstNum, secondNum);
-                    console.log("Addition:", firstNum, "+", secondNum, "=", result);
-                    break;
-                case "-":
-                    result = subtractNumbers(firstNum, secondNum);
-                    console.log("Subtraktion:", firstNum, "-", secondNum, "=", result);
-                    break;
-                case "*":
-                    result = multiplyNumbers(firstNum, secondNum);
-                    console.log("Multiplikation:", firstNum, "*", secondNum, "=", result);
-                    break;
-                case "/":
-                    result = divideNumbers(firstNum, secondNum);
-                    console.log("Division:", firstNum, "/", secondNum, "=", result);
-                    break;
-                default:
-                    console.log("Unbekannter Operator:", groupedInput[1]);
-                    return; // Abbrechen, wenn kein gültiger Operator
-            }
-
-            resultDisplay.textContent = result;
-            inputArray.length = 0; // Zurücksetzen für nächste Eingabe
-            inputArray.push(result); // Ergebnis als neue Basis wieder reinpushen
-            userInput = result.toString(); // Damit Display den aktuellen Wert kennt
-            result = "";
-            secondNum = result;
-            console.log("groupedInput nach Berechnung:", groupedInput);
+    if (groupedInput.length === 3) {
+        let firstNum = groupedInput[0];
+        let secondNum = groupedInput[2];
+        
+        switch (groupedInput[1]) {
+            case "+":
+                result = addNumbers(firstNum, secondNum);
+                console.log("Addition:", firstNum, "+", secondNum, "=", result);
+                break;
+            case "-":
+                result = subtractNumbers(firstNum, secondNum);
+                console.log("Subtraktion:", firstNum, "-", secondNum, "=", result);
+                break;
+            case "*":
+                result = multiplyNumbers(firstNum, secondNum);
+                console.log("Multiplikation:", firstNum, "*", secondNum, "=", result);
+                break;
+            case "/":
+                result = divideNumbers(firstNum, secondNum);
+                console.log("Division:", firstNum, "/", secondNum, "=", result);
+                break;
+            default:
+                console.log("Unbekannter Operator:", groupedInput[1]);
+                return;
         }
+
+        if (resultDisplay) resultDisplay.textContent = result;
+        inputArray.length = 0;
+        inputArray.push(String(result));
+        userInput = String(result);
+        result = "";
+        tempResult = "";
+        console.log("groupedInput nach Berechnung:", groupedInput, "neues inputArray:", inputArray);
     }
-// });
+}
 
-
-// Operator Button Clicks
+// Operator-Buttons
 operatorButtons.forEach((button) => {
     button.addEventListener("click", function () {
         const operator = button.textContent;
         console.log("Operator gedrückt:", operator);
 
-        // Nur den letzten Wert aus inputArray + Operator anzeigen
         if (inputArray.length === 1 && !isNaN(inputArray[0])) {
             userInput = inputArray[0] + operator;
         } else {
             userInput += operator;
         }
 
-        resultDisplay.textContent = userInput;
+        if (resultDisplay) resultDisplay.textContent = userInput;
         inputArray.push(operator);
         console.log("Aktuelles inputArray nach Operator:", inputArray);
 
-        calcArray(inputArray);
+        operate(inputArray);
     });
 });
 
-
-// Calculator Clear Button 
-
-clearButton.addEventListener("click", () => {
-    console.log("Clear gedrückt");
-    inputArray.length = 0; // Eingabe-Array zurücksetzen
-    resultDisplay.textContent = "cleared";
-    userInput = ""; // Benutzer-Eingabe zurücksetzen
-    result = ""; // Ergebnis zurücksetzen
-    setTimeout(function () {
-        document.getElementById("result").textContent = "";
-        resultDisplay.style.fontSize = "46px"; // Schriftgröße zurücksetzen
-    }, 1000);
-    console.log("Rechner zurückgesetzt. inputArray:", inputArray, "userInput:", userInput, "result:", result);
-});
+// Clear-Button
+if (clearButton) {
+    clearButton.addEventListener("click", () => {
+        console.log("Clear gedrückt");
+        inputArray.length = 0;
+        userInput = "";
+        result = "";
+        tempResult = "";
+        if (resultDisplay) {
+            resultDisplay.textContent = "cleared";
+            resultDisplay.style.fontSize = "46px";
+            setTimeout(() => {
+                resultDisplay.textContent = "";
+            }, 1000);
+        }
+        console.log("Rechner zurückgesetzt. inputArray:", inputArray, "userInput:", userInput, "result:", result);
+    });
+} else {
+    console.warn("Clear-Button (#CLEAR) nicht gefunden.");
+}
